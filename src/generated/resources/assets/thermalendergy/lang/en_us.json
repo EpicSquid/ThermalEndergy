@@ -1,5 +1,8 @@
 {
   "item.thermalendergy.crystalium_ingot": "Crystalium Ingot",
+  "item.thermalendergy.endergy_upgrade_1": "Crystalium Integral Components",
+  "item.thermalendergy.endergy_upgrade_2": "Melodium Integral Components",
+  "item.thermalendergy.endergy_upgrade_3": "Stellarium Integral Components",
   "item.thermalendergy.melodium_ingot": "Melodium Ingot",
   "item.thermalendergy.stellarium_ingot": "Stellarium Ingot"
 }

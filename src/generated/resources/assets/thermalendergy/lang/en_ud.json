@@ -1,5 +1,8 @@
 {
   "item.thermalendergy.crystalium_ingot": "\u0287obuI \u026Fn\u0131\u05DF\u0250\u0287s\u028E\u0279\u0186",
+  "item.thermalendergy.endergy_upgrade_1": "s\u0287u\u01DDuod\u026Fo\u0186 \u05DF\u0250\u0279b\u01DD\u0287uI \u026Fn\u0131\u05DF\u0250\u0287s\u028E\u0279\u0186",
+  "item.thermalendergy.endergy_upgrade_2": "s\u0287u\u01DDuod\u026Fo\u0186 \u05DF\u0250\u0279b\u01DD\u0287uI \u026Fn\u0131po\u05DF\u01DDW",
+  "item.thermalendergy.endergy_upgrade_3": "s\u0287u\u01DDuod\u026Fo\u0186 \u05DF\u0250\u0279b\u01DD\u0287uI \u026Fn\u0131\u0279\u0250\u05DF\u05DF\u01DD\u0287S",
   "item.thermalendergy.melodium_ingot": "\u0287obuI \u026Fn\u0131po\u05DF\u01DDW",
   "item.thermalendergy.stellarium_ingot": "\u0287obuI \u026Fn\u0131\u0279\u0250\u05DF\u05DF\u01DD\u0287S"
 }
