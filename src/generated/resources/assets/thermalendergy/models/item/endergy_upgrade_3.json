@@ -1,6 +1,8 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "thermalendergy:item/endergy_upgrade_3"
+    "layer0": "thermalendergy:item/endergy_upgrade_3",
+    "layer1": "thermalendergy:item/endergy_upgrade_3_lights",
+    "layer2": "thermalendergy:item/endergy_upgrade_anim"
   }
 }
