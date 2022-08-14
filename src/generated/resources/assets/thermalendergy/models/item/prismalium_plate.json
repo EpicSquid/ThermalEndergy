@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "thermalendergy:item/prismalium_plate_0"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "minecraft:count": 0.0
+      },
+      "model": "thermalendergy:item/prismalium_plate_0"
+    },
+    {
+      "predicate": {
+        "minecraft:count": 0.25
+      },
+      "model": "thermalendergy:item/prismalium_plate_1"
+    },
+    {
+      "predicate": {
+        "minecraft:count": 0.5
+      },
+      "model": "thermalendergy:item/prismalium_plate_2"
+    },
+    {
+      "predicate": {
+        "minecraft:count": 1.0
+      },
+      "model": "thermalendergy:item/prismalium_plate_3"
+    }
+  ]
+}

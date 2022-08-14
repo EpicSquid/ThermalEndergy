@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "thermalendergy:item/prismalium_plate_0"
+  }
+}

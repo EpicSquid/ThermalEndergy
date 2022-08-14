@@ -1,0 +1,38 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "thermalendergy:item/stellarium_coin_0"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "minecraft:count": 0.0
+      },
+      "model": "thermalendergy:item/stellarium_coin_0"
+    },
+    {
+      "predicate": {
+        "minecraft:count": 0.03125
+      },
+      "model": "thermalendergy:item/stellarium_coin_1"
+    },
+    {
+      "predicate": {
+        "minecraft:count": 0.25
+      },
+      "model": "thermalendergy:item/stellarium_coin_2"
+    },
+    {
+      "predicate": {
+        "minecraft:count": 0.5
+      },
+      "model": "thermalendergy:item/stellarium_coin_3"
+    },
+    {
+      "predicate": {
+        "minecraft:count": 1.0
+      },
+      "model": "thermalendergy:item/stellarium_coin_4"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "thermalendergy:item/crystalium_ingot"
+    "layer0": "thermalendergy:item/melodium_gear"
   }
 }
