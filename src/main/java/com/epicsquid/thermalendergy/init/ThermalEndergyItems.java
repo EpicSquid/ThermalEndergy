@@ -11,7 +11,10 @@ import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateItemModelProvider;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
+import net.minecraft.core.Registry;
+import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.minecraftforge.client.model.generators.ItemModelBuilder;
@@ -71,18 +74,31 @@ public class ThermalEndergyItems {
 			.register();
 
 	public static ItemEntry<ItemCoFH> registerEndergyAlloy(String prefix, Rarity rarity) {
-		REGISTRATE.item(prefix + "_nugget", ItemCoFH::new).properties(props -> props.tab(ThermalEndergy.CREATIVE_TAB).rarity(rarity)).register();
-		REGISTRATE.item(prefix + "_dust", ItemCoFH::new).properties(props -> props.tab(ThermalEndergy.CREATIVE_TAB).rarity(rarity)).register();
-		REGISTRATE.item(prefix + "_gear", ItemCoFH::new).properties(props -> props.tab(ThermalEndergy.CREATIVE_TAB).rarity(rarity)).register();
+		REGISTRATE.item(prefix + "_nugget", ItemCoFH::new)
+				.properties(props -> props.tab(ThermalEndergy.CREATIVE_TAB).rarity(rarity))
+				.tag(new TagKey<>(Registry.ITEM_REGISTRY, new ResourceLocation("forge", "nuggets/" + prefix)))
+				.register();
+		REGISTRATE.item(prefix + "_dust", ItemCoFH::new)
+				.properties(props -> props.tab(ThermalEndergy.CREATIVE_TAB).rarity(rarity))
+				.tag(new TagKey<>(Registry.ITEM_REGISTRY, new ResourceLocation("forge", "dusts/" + prefix)))
+				.register();
+		REGISTRATE.item(prefix + "_gear", ItemCoFH::new)
+				.properties(props -> props.tab(ThermalEndergy.CREATIVE_TAB).rarity(rarity))
+				.tag(new TagKey<>(Registry.ITEM_REGISTRY, new ResourceLocation("forge", "gears/" + prefix)))
+				.register();
 		REGISTRATE.item(prefix + "_plate", CountedItem::new)
 				.properties(props -> props.tab(ThermalEndergy.CREATIVE_TAB).rarity(rarity))
 				.model((item, p) -> getCountModel(p, item, prefix + "_plate", new float[]{0.0f, 0.25f, 0.5f, 1.0f}))
+				.tag(new TagKey<>(Registry.ITEM_REGISTRY, new ResourceLocation("forge", "plates/" + prefix)))
 				.register();
 		REGISTRATE.item(prefix + "_coin", CoinItem::new)
 				.properties(props -> props.tab(ThermalEndergy.CREATIVE_TAB).rarity(rarity))
 				.model((item, p) -> getCountModel(p, item, prefix + "_coin", new float[]{0.0f, 0.03125f, 0.25f, 0.5f, 1.0f}))
 				.register();
-		return REGISTRATE.item(prefix + "_ingot", ItemCoFH::new).properties(props -> props.tab(ThermalEndergy.CREATIVE_TAB).rarity(rarity)).register();
+		return REGISTRATE.item(prefix + "_ingot", ItemCoFH::new)
+				.properties(props -> props.tab(ThermalEndergy.CREATIVE_TAB).rarity(rarity))
+				.tag(new TagKey<>(Registry.ITEM_REGISTRY, new ResourceLocation("forge", "ingots/" + prefix)))
+				.register();
 	}
 
 	public static void getCountModel(RegistrateItemModelProvider p, DataGenContext<Item, ?> item, String name, float[] counts) {
