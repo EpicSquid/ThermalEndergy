@@ -4,21 +4,27 @@ import cofh.core.item.CoinItem;
 import cofh.core.item.CountedItem;
 import cofh.core.item.ItemCoFH;
 import cofh.lib.util.helpers.AugmentDataHelper;
+import cofh.thermal.core.util.recipes.machine.SmelterRecipe;
 import cofh.thermal.lib.item.AugmentItem;
 import com.epicsquid.thermalendergy.ThermalEndergy;
 import com.tterrag.registrate.Registrate;
+import com.tterrag.registrate.builders.ItemBuilder;
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateItemModelProvider;
+import com.tterrag.registrate.util.DataIngredient;
 import com.tterrag.registrate.util.entry.ItemEntry;
-import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import net.minecraft.core.Registry;
+import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
-import net.minecraftforge.client.model.generators.ItemModelBuilder;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.client.model.generators.ModelFile;
+import net.minecraftforge.common.Tags;
+
+import java.util.ArrayList;
 
 import static cofh.lib.util.constants.NBTTags.TAG_AUGMENT_BASE_MOD;
 import static cofh.lib.util.constants.NBTTags.TAG_AUGMENT_TYPE_UPGRADE;
@@ -30,9 +36,16 @@ public class ThermalEndergyItems {
 	private static final ResourceLocation COUNT_PREDICATE = new ResourceLocation("count");
 	private static final Registrate REGISTRATE = ThermalEndergy.registrate();
 
-	public static final ItemEntry<ItemCoFH> PRISMALIUM_INGOT = registerEndergyAlloy("prismalium", Rarity.UNCOMMON);
-	public static final ItemEntry<ItemCoFH> MELODIUM_INGOT = registerEndergyAlloy("melodium", Rarity.UNCOMMON);
-	public static final ItemEntry<ItemCoFH> STELLARIUM_INGOT = registerEndergyAlloy("stellarium", Rarity.RARE);
+	public static final ItemEntry<ItemCoFH> CRYSTALIUM_INGOT = registerEndergyAlloy("prismalium", Rarity.UNCOMMON)
+//			.recipe((item, p) -> new SmelterRecipe(
+//					p.safeId(item.getEntry()),
+//					20000,
+//					0,
+//					new ArrayList<Ingredient>()
+//			))
+			.register();
+	public static final ItemEntry<ItemCoFH> MELODIUM_INGOT = registerEndergyAlloy("melodium", Rarity.RARE).register();
+	public static final ItemEntry<ItemCoFH> STELLARIUM_INGOT = registerEndergyAlloy("stellarium", Rarity.RARE).register();
 
 	public static final ItemEntry<ItemCoFH> PRISMALIUM_UPGRADE = REGISTRATE.item("endergy_upgrade_1", props -> new AugmentItem(props,
 					AugmentDataHelper.builder()
@@ -73,23 +86,42 @@ public class ThermalEndergyItems {
 			.lang("Stellar Integral Components")
 			.register();
 
-	public static ItemEntry<ItemCoFH> registerEndergyAlloy(String prefix, Rarity rarity) {
+	public static ItemBuilder<ItemCoFH, Registrate> registerEndergyAlloy(String prefix, Rarity rarity) {
+		// Tags
+		var nugget = new TagKey<>(Registry.ITEM_REGISTRY, new ResourceLocation("forge", "nuggets/" + prefix));
+		var dust = new TagKey<>(Registry.ITEM_REGISTRY, new ResourceLocation("forge", "dusts/" + prefix));
+		var gear = new TagKey<>(Registry.ITEM_REGISTRY, new ResourceLocation("forge", "gears/" + prefix));
+		var plate = new TagKey<>(Registry.ITEM_REGISTRY, new ResourceLocation("forge", "plates/" + prefix));
+		var ingot = new TagKey<>(Registry.ITEM_REGISTRY, new ResourceLocation("forge", "ingots/" + prefix));
+
 		REGISTRATE.item(prefix + "_nugget", ItemCoFH::new)
 				.properties(props -> props.tab(ThermalEndergy.CREATIVE_TAB).rarity(rarity))
-				.tag(new TagKey<>(Registry.ITEM_REGISTRY, new ResourceLocation("forge", "nuggets/" + prefix)))
+				.tag(nugget)
+				.recipe((item, p) -> ShapelessRecipeBuilder.shapeless(item.getEntry(), 9)
+						.requires(ingot)
+						.unlockedBy("has_ingot", DataIngredient.tag(ingot).getCritereon(p))
+						.save(p, p.safeId(item.getEntry())))
 				.register();
 		REGISTRATE.item(prefix + "_dust", ItemCoFH::new)
 				.properties(props -> props.tab(ThermalEndergy.CREATIVE_TAB).rarity(rarity))
-				.tag(new TagKey<>(Registry.ITEM_REGISTRY, new ResourceLocation("forge", "dusts/" + prefix)))
+				.tag(dust)
 				.register();
 		REGISTRATE.item(prefix + "_gear", ItemCoFH::new)
 				.properties(props -> props.tab(ThermalEndergy.CREATIVE_TAB).rarity(rarity))
-				.tag(new TagKey<>(Registry.ITEM_REGISTRY, new ResourceLocation("forge", "gears/" + prefix)))
+				.tag(gear)
+				.recipe((item, p) -> ShapedRecipeBuilder.shaped(item.getEntry())
+						.pattern(" I ")
+						.pattern("INI")
+						.pattern(" I ")
+						.define('I', ingot)
+						.define('N', Tags.Items.NUGGETS_IRON)
+						.unlockedBy("has_ingot", DataIngredient.tag(ingot).getCritereon(p))
+						.save(p, p.safeId(item.getEntry())))
 				.register();
 		REGISTRATE.item(prefix + "_plate", CountedItem::new)
 				.properties(props -> props.tab(ThermalEndergy.CREATIVE_TAB).rarity(rarity))
 				.model((item, p) -> getCountModel(p, item, prefix + "_plate", new float[]{0.0f, 0.25f, 0.5f, 1.0f}))
-				.tag(new TagKey<>(Registry.ITEM_REGISTRY, new ResourceLocation("forge", "plates/" + prefix)))
+				.tag(plate)
 				.register();
 		REGISTRATE.item(prefix + "_coin", CoinItem::new)
 				.properties(props -> props.tab(ThermalEndergy.CREATIVE_TAB).rarity(rarity))
@@ -97,8 +129,11 @@ public class ThermalEndergyItems {
 				.register();
 		return REGISTRATE.item(prefix + "_ingot", ItemCoFH::new)
 				.properties(props -> props.tab(ThermalEndergy.CREATIVE_TAB).rarity(rarity))
-				.tag(new TagKey<>(Registry.ITEM_REGISTRY, new ResourceLocation("forge", "ingots/" + prefix)))
-				.register();
+				.tag(ingot)
+				.recipe((item, p) -> ShapelessRecipeBuilder.shapeless(item.getEntry())
+						.requires(Ingredient.of(nugget), 9)
+						.unlockedBy("has_ingot", DataIngredient.tag(ingot).getCritereon(p))
+						.save(p, p.safeId(item.getEntry())));
 	}
 
 	public static void getCountModel(RegistrateItemModelProvider p, DataGenContext<Item, ?> item, String name, float[] counts) {

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:ingots/stellarium"
+    }
+  ],
+  "result": {
+    "item": "thermalendergy:stellarium_nugget",
+    "count": 9
+  }
+}
