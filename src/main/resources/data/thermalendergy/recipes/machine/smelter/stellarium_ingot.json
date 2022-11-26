@@ -1,0 +1,35 @@
+{
+  "type": "thermal:smelter",
+  "ingredients": [
+    {
+      "value": [
+        {
+          "tag": "forge:ingots/netherite"
+        },
+        {
+          "tag": "forge:dusts/netherite"
+        }
+      ],
+      "count": 4
+    },
+    {
+      "tag": "forge:nether_stars",
+      "count": 1
+    },
+    {
+      "value": [
+        {
+          "item": "minecraft:clay_ball"
+        }
+      ],
+      "count": 4
+    }
+  ],
+  "result": [
+    {
+      "item": "thermalendergy:stellarium_ingot",
+      "count": 4
+    }
+  ],
+  "energy": 64000
+}

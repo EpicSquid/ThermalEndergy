@@ -1,0 +1,35 @@
+{
+  "type": "thermal:smelter",
+  "ingredients": [
+    {
+      "value": [
+        {
+          "tag": "forge:gems/prismarine"
+        }
+      ],
+      "count": 1
+    },
+    {
+      "tag": "forge:dusts/prismarine",
+      "count": 3
+    },
+    {
+      "value": [
+        {
+          "tag": "forge:ingots/nickel"
+        },
+        {
+          "tag": "forge:dusts/nickel"
+        }
+      ],
+      "count": 2
+    }
+  ],
+  "result": [
+    {
+      "item": "thermalendergy:prismalium_ingot",
+      "count": 2
+    }
+  ],
+  "energy": 24000
+}

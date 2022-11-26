@@ -1,0 +1,35 @@
+{
+  "type": "thermal:smelter",
+  "ingredients": [
+    {
+      "value": [
+        {
+          "tag": "forge:gems/amethyst"
+        }
+      ],
+      "count": 4
+    },
+    {
+      "item": "minecraft:chorus_fruit",
+      "count": 4
+    },
+    {
+      "value": [
+        {
+          "tag": "forge:ingots/gold"
+        },
+        {
+          "tag": "forge:dusts/gold"
+        }
+      ],
+      "count": 2
+    }
+  ],
+  "result": [
+    {
+      "item": "thermalendergy:melodium_ingot",
+      "count": 2
+    }
+  ],
+  "energy": 32000
+}

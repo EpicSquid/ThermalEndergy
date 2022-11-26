@@ -1,0 +1,11 @@
+{
+  "type": "thermal:press",
+  "ingredient": {
+    "tag": "forge:ingots/melodium"
+  },
+  "result": [
+    {
+      "item": "thermalendergy:melodium_plate"
+    }
+  ]
+}
