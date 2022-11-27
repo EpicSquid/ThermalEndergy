@@ -1,10 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    " I ",
-    "INI",
-    " I "
-  ],
   "key": {
     "I": {
       "tag": "forge:ingots/prismalium"
@@ -13,6 +8,11 @@
       "tag": "forge:nuggets/iron"
     }
   },
+  "pattern": [
+    " I ",
+    "INI",
+    " I "
+  ],
   "result": {
     "item": "thermalendergy:prismalium_gear"
   }

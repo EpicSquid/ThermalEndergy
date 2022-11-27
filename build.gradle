@@ -172,15 +172,16 @@ dependencies {
     minecraft "net.minecraftforge:forge:${mc_version}-${forge_version}"
 
     // Dev env convenience
-    runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}")
+    runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}-forge:${jei_version}")
 
     // Thermal
     implementation fg.deobf("com.teamcofh:cofh_core:${mc_version}-${cofh_core_version}")
+    implementation fg.deobf("com.teamcofh:thermal_core:${mc_version}-${thermal_core_version}")
     implementation fg.deobf("com.teamcofh:thermal_foundation:${mc_version}-${thermal_foundation_version}")
     runtimeOnly fg.deobf("com.teamcofh:thermal_expansion:${mc_version}-${thermal_expansion_version}")
 
     // Registrate
-    def registrate = "com.tterrag.registrate:Registrate:MC${mc_version}-${registrate_version}"
+    def registrate = "com.tterrag.registrate:Registrate:${registrate_version}"
     implementation fg.deobf(registrate)
     shade registrate
 }

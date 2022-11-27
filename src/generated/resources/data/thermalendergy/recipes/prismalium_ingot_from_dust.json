@@ -1,9 +1,9 @@
 {
   "type": "minecraft:smelting",
+  "cookingtime": 200,
+  "experience": 0.0,
   "ingredient": {
     "tag": "forge:dusts/prismalium"
   },
-  "result": "thermalendergy:prismalium_ingot",
-  "experience": 0.0,
-  "cookingtime": 200
+  "result": "thermalendergy:prismalium_ingot"
 }

@@ -1,24 +1,24 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "IXI",
-    "GCG",
-    "IXI"
-  ],
   "key": {
-    "I": {
-      "tag": "forge:ingots/stellarium"
-    },
     "C": {
       "item": "thermalendergy:endergy_upgrade_2"
     },
     "G": {
       "tag": "forge:gears/melodium"
     },
+    "I": {
+      "tag": "forge:ingots/stellarium"
+    },
     "X": {
       "item": "minecraft:clay"
     }
   },
+  "pattern": [
+    "IXI",
+    "GCG",
+    "IXI"
+  ],
   "result": {
     "item": "thermalendergy:endergy_upgrade_3"
   }

@@ -1,24 +1,24 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "IXI",
-    "GCG",
-    "IXI"
-  ],
   "key": {
-    "I": {
-      "tag": "forge:ingots/prismalium"
-    },
     "C": {
       "tag": "thermalendergy:upgrade_3"
     },
     "G": {
       "tag": "forge:gears/enderium"
     },
+    "I": {
+      "tag": "forge:ingots/prismalium"
+    },
     "X": {
       "item": "minecraft:ender_eye"
     }
   },
+  "pattern": [
+    "IXI",
+    "GCG",
+    "IXI"
+  ],
   "result": {
     "item": "thermalendergy:endergy_upgrade_1"
   }

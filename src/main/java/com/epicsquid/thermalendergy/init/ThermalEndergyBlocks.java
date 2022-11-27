@@ -1,6 +1,7 @@
 package com.epicsquid.thermalendergy.init;
 
 import cofh.thermal.core.init.TCoreBlocks;
+import cofh.thermal.core.util.RegistrationHelper;
 import com.epicsquid.thermalendergy.ThermalEndergy;
 import com.tterrag.registrate.Registrate;
 import com.tterrag.registrate.util.DataIngredient;
@@ -22,7 +23,7 @@ public class ThermalEndergyBlocks {
 	public static final TagKey<Block> PRISMALIUM_BLOCK_TAG = BlockTags.create(new ResourceLocation("forge", "storage_blocks/prismalium"));
 	private static final TagKey<Item> PRISMALIUM_INGOT = ItemTags.create(new ResourceLocation("forge", "ingots/prismalium"));
 
-	public static final BlockEntry<Block> PRISMALIUM_BLOCK = REGISTRATE.block("prismalium_block", props -> TCoreBlocks.storageBlock())
+	public static final BlockEntry<Block> PRISMALIUM_BLOCK = REGISTRATE.block("prismalium_block", props -> RegistrationHelper.storageBlock())
 			.tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.NEEDS_IRON_TOOL, BlockTags.BEACON_BASE_BLOCKS, PRISMALIUM_BLOCK_TAG)
 			.item()
 			.tag(PRISMALIUM_ITEM_TAG)
@@ -38,7 +39,7 @@ public class ThermalEndergyBlocks {
 	public static final TagKey<Block> MELODIUM_BLOCK_TAG = BlockTags.create(new ResourceLocation("forge", "storage_blocks/melodium"));
 	private static final TagKey<Item> MELODIUM_INGOT = ItemTags.create(new ResourceLocation("forge", "ingots/melodium"));
 
-	public static final BlockEntry<Block> MELODIUM_BLOCK = REGISTRATE.block("melodium_block", props -> TCoreBlocks.storageBlock())
+	public static final BlockEntry<Block> MELODIUM_BLOCK = REGISTRATE.block("melodium_block", props -> RegistrationHelper.storageBlock())
 			.tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.NEEDS_IRON_TOOL, BlockTags.BEACON_BASE_BLOCKS, MELODIUM_BLOCK_TAG)
 			.item()
 			.tag(MELODIUM_ITEM_TAG)
@@ -54,7 +55,7 @@ public class ThermalEndergyBlocks {
 	public static final TagKey<Block> STELLARIUM_BLOCK_TAG = BlockTags.create(new ResourceLocation("forge", "storage_blocks/stellarium"));
 	private static final TagKey<Item> STELLARIUM_INGOT = ItemTags.create(new ResourceLocation("forge", "ingots/stellarium"));
 
-	public static final BlockEntry<Block> STELLARIUM_BLOCK = REGISTRATE.block("stellarium_block", props -> TCoreBlocks.storageBlock())
+	public static final BlockEntry<Block> STELLARIUM_BLOCK = REGISTRATE.block("stellarium_block", props -> RegistrationHelper.storageBlock())
 			.tag(BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.NEEDS_IRON_TOOL, BlockTags.BEACON_BASE_BLOCKS, STELLARIUM_BLOCK_TAG)
 			.item()
 			.tag(STELLARIUM_ITEM_TAG)

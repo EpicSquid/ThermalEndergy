@@ -1,9 +1,9 @@
 {
   "type": "minecraft:smelting",
+  "cookingtime": 200,
+  "experience": 0.0,
   "ingredient": {
     "tag": "forge:dusts/melodium"
   },
-  "result": "thermalendergy:melodium_ingot",
-  "experience": 0.0,
-  "cookingtime": 200
+  "result": "thermalendergy:melodium_ingot"
 }

@@ -11,10 +11,10 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.data.ForgeBlockTagsProvider;
 import net.minecraftforge.common.util.Lazy;
+import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 
 import javax.annotation.Nonnull;
 
@@ -48,10 +48,8 @@ public class ThermalEndergy {
 
 	public void gatherData(GatherDataEvent event) {
 		DataGenerator generator = event.getGenerator();
-		if (event.includeServer()) {
-			ForgeBlockTagsProvider b = new ForgeBlockTagsProvider(generator, event.getExistingFileHelper());
-			generator.addProvider(new ThermalEndergyTags(generator, b, event.getExistingFileHelper()));
-		}
+		ForgeBlockTagsProvider b = new ForgeBlockTagsProvider(generator, event.getExistingFileHelper());
+		generator.addProvider(event.includeServer(), new ThermalEndergyTags(generator, b, event.getExistingFileHelper()));
 	}
 
 	private void setup(final FMLCommonSetupEvent event) {
