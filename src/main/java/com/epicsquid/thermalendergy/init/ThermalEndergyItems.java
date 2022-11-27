@@ -36,7 +36,7 @@ public class ThermalEndergyItems {
 
 	private static final ResourceLocation COUNT_PREDICATE = new ResourceLocation("count");
 	private static final Registrate REGISTRATE = ThermalEndergy.registrate();
-	public static final ItemEntry<ItemCoFH> CRYSTALIUM_INGOT = registerEndergyAlloy("prismalium", Rarity.UNCOMMON)
+	public static final ItemEntry<ItemCoFH> PRISMALIUM_INGOT = registerEndergyAlloy("prismalium", Rarity.UNCOMMON)
 			.register();
 	public static final ItemEntry<ItemCoFH> MELODIUM_INGOT = registerEndergyAlloy("melodium", Rarity.RARE).register();
 	public static final ItemEntry<ItemCoFH> STELLARIUM_INGOT = registerEndergyAlloy("stellarium", Rarity.RARE).register();
@@ -124,13 +124,15 @@ public class ThermalEndergyItems {
 		return REGISTRATE.item(prefix + "_ingot", ItemCoFH::new)
 				.properties(props -> props.tab(ThermalEndergy.CREATIVE_TAB).rarity(rarity))
 				.tag(ingot)
-				.recipe((ctx, p) -> SimpleCookingRecipeBuilder.smelting(Ingredient.of(dust), ctx.getEntry(), 0, 200)
-						.unlockedBy("has_dust", DataIngredient.tag(dust).getCritereon(p))
-						.save(p, p.safeId(ctx.getEntry())))
-				.recipe((item, p) -> ShapelessRecipeBuilder.shapeless(item.getEntry())
-						.requires(Ingredient.of(nugget), 9)
-						.unlockedBy("has_ingot", DataIngredient.tag(ingot).getCritereon(p))
-						.save(p, p.safeId(item.getEntry())));
+				.recipe((item, p) -> {
+					SimpleCookingRecipeBuilder.smelting(Ingredient.of(dust), item.getEntry(), 0, 200)
+							.unlockedBy("has_dust", DataIngredient.tag(dust).getCritereon(p))
+							.save(p, new ResourceLocation(p.safeId(item.getEntry()).getNamespace(), p.safeId(item.getEntry()).getPath() + "_from_dust"));
+					ShapelessRecipeBuilder.shapeless(item.getEntry())
+							.requires(Ingredient.of(nugget), 9)
+							.unlockedBy("has_ingot", DataIngredient.tag(ingot).getCritereon(p))
+							.save(p, p.safeId(item.getEntry()));
+				});
 	}
 
 	public static void getCountModel(RegistrateItemModelProvider p, DataGenContext<Item, ?> item, String name, float[] counts) {
