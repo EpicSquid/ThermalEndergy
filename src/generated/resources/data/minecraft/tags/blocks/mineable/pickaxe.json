@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "thermalendergy:prismalium_block",
+    "thermalendergy:melodium_block",
+    "thermalendergy:stellarium_block"
+  ]
+}

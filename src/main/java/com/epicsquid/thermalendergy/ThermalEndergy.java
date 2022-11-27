@@ -1,5 +1,6 @@
 package com.epicsquid.thermalendergy;
 
+import com.epicsquid.thermalendergy.init.ThermalEndergyBlocks;
 import com.epicsquid.thermalendergy.init.ThermalEndergyItems;
 import com.epicsquid.thermalendergy.init.ThermalEndergyLang;
 import com.tterrag.registrate.Registrate;
@@ -23,7 +24,7 @@ public class ThermalEndergy {
 		@Override
 		@Nonnull
 		public ItemStack makeIcon() {
-			return new ItemStack(ThermalEndergyItems.STELLARIUM_INGOT.get());
+			return new ItemStack(ThermalEndergyBlocks.STELLARIUM_BLOCK.get());
 		}
 	};
 
@@ -32,6 +33,7 @@ public class ThermalEndergy {
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
 
 		// Init items
+		ThermalEndergyBlocks.classload();
 		ThermalEndergyItems.classload();
 		ThermalEndergyLang.classload();
 

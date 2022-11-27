@@ -2,7 +2,7 @@
   "type": "thermal:press",
   "ingredients": [
     {
-      "item": "thermal:prismalium_block",
+      "tag": "forge:storage_blocks/prismalium",
       "count": 1
     },
     {

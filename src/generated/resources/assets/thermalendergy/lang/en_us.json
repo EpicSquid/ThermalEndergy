@@ -1,4 +1,7 @@
 {
+  "block.thermalendergy.melodium_block": "Melodium Block",
+  "block.thermalendergy.prismalium_block": "Prismalium Block",
+  "block.thermalendergy.stellarium_block": "Stellarium Block",
   "item.thermalendergy.endergy_upgrade_1": "Pristine Integral Components",
   "item.thermalendergy.endergy_upgrade_2": "Melodic Integral Components",
   "item.thermalendergy.endergy_upgrade_3": "Stellar Integral Components",

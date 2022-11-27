@@ -16,7 +16,6 @@ import net.minecraft.core.Registry;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
-import net.minecraft.data.recipes.UpgradeRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -24,8 +23,6 @@ import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.Tags;
-
-import java.util.ArrayList;
 
 import static cofh.lib.util.constants.NBTTags.TAG_AUGMENT_BASE_MOD;
 import static cofh.lib.util.constants.NBTTags.TAG_AUGMENT_TYPE_UPGRADE;
@@ -87,6 +84,7 @@ public class ThermalEndergyItems {
 		var gear = TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation("forge", "gears/" + prefix));
 		var plate = TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation("forge", "plates/" + prefix));
 		var ingot = TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation("forge", "ingots/" + prefix));
+		var block = TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation("forge", "storage_blocks/" + prefix));
 
 		REGISTRATE.item(prefix + "_nugget", ItemCoFH::new)
 				.properties(props -> props.tab(ThermalEndergy.CREATIVE_TAB).rarity(rarity))
@@ -132,6 +130,10 @@ public class ThermalEndergyItems {
 							.requires(Ingredient.of(nugget), 9)
 							.unlockedBy("has_ingot", DataIngredient.tag(ingot).getCritereon(p))
 							.save(p, p.safeId(item.getEntry()));
+					ShapelessRecipeBuilder.shapeless(item.getEntry(), 9)
+							.requires(block)
+							.unlockedBy("has_block", DataIngredient.tag(block).getCritereon(p))
+							.save(p,  new ResourceLocation(p.safeId(item.getEntry()).getNamespace(), p.safeId(item.getEntry()).getPath() + "_from_block"));
 				});
 	}
 

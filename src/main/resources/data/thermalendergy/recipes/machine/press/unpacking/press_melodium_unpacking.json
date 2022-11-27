@@ -2,7 +2,7 @@
   "type": "thermal:press",
   "ingredients": [
     {
-      "item": "thermal:melodium_block",
+      "tag": "forge:storage_blocks/melodium",
       "count": 1
     },
     {

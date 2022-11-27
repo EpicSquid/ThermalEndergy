@@ -2,7 +2,7 @@
   "type": "thermal:press",
   "ingredients": [
     {
-      "item": "thermal:stellarium_block",
+      "tag": "forge:storage_blocks/stellarium",
       "count": 1
     },
     {
