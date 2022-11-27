@@ -1,22 +1,30 @@
 package com.epicsquid.thermalendergy.init;
 
+import com.epicsquid.thermalendergy.ThermalEndergy;
 import net.minecraft.core.Registry;
+import net.minecraft.data.DataGenerator;
+import net.minecraft.data.tags.BlockTagsProvider;
+import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraftforge.common.data.ExistingFileHelper;
+import org.jetbrains.annotations.Nullable;
 
-public class ThermalEndergyTags {
+public class ThermalEndergyTags extends ItemTagsProvider {
 
-	public static final TagKey<Item> STELLARIUM_INGOT = new TagKey<>(Registry.ITEM_REGISTRY, new ResourceLocation("forge", "ingots/stellarium"));
-	public static final TagKey<Item> STELLARIUM_NUGGET = new TagKey<>(Registry.ITEM_REGISTRY, new ResourceLocation("forge", "nuggets/stellarium"));
-	public static final TagKey<Item> STELLARIUM_GEAR = new TagKey<>(Registry.ITEM_REGISTRY, new ResourceLocation("forge", "gears/stellarium"));
-	public static final TagKey<Item> STELLARIUM_PLATE = new TagKey<>(Registry.ITEM_REGISTRY, new ResourceLocation("forge", "plates/stellarium"));
-	public static final TagKey<Item> MELODIUM_INGOT = new TagKey<>(Registry.ITEM_REGISTRY, new ResourceLocation("forge", "ingots/melodium"));
-	public static final TagKey<Item> MELODIUM_NUGGET = new TagKey<>(Registry.ITEM_REGISTRY, new ResourceLocation("forge", "nuggets/melodium"));
-	public static final TagKey<Item> MELODIUM_GEAR = new TagKey<>(Registry.ITEM_REGISTRY, new ResourceLocation("forge", "gears/melodium"));
-	public static final TagKey<Item> MELODIUM_PLATE = new TagKey<>(Registry.ITEM_REGISTRY, new ResourceLocation("forge", "plates/melodium"));
-	public static final TagKey<Item> CRYSTALIUM_INGOT = new TagKey<>(Registry.ITEM_REGISTRY, new ResourceLocation("forge", "ingots/crystalium"));
-	public static final TagKey<Item> CRYSTALIUM_NUGGET = new TagKey<>(Registry.ITEM_REGISTRY, new ResourceLocation("forge", "nuggets/crystalium"));
-	public static final TagKey<Item> CRYSTALIUM_GEAR = new TagKey<>(Registry.ITEM_REGISTRY, new ResourceLocation("forge", "gears/crystalium"));
-	public static final TagKey<Item> CRYSTALIUM_PLATE = new TagKey<>(Registry.ITEM_REGISTRY, new ResourceLocation("forge", "plates/crystalium"));
+	public static final TagKey<Item> STELLARIUM_INGOT = ItemTags.create(new ResourceLocation("forge", "ingots/stellarium"));
+	public static final TagKey<Item> MELODIUM_INGOT = ItemTags.create(new ResourceLocation("forge", "ingots/melodium"));
+	public static final TagKey<Item> PRISMALIUM_INGOT = ItemTags.create(new ResourceLocation("forge", "ingots/prismalium"));
+	public static final TagKey<Item> UPGRADE_3 = ItemTags.create(new ResourceLocation("thermalendergy", "upgrade_3"));
+
+	public ThermalEndergyTags(DataGenerator gen, BlockTagsProvider prov, @Nullable ExistingFileHelper existingFileHelper) {
+		super(gen, prov, ThermalEndergy.MODID, existingFileHelper);
+	}
+
+	@Override
+	public void addTags() {
+		tag(UPGRADE_3).addOptional(new ResourceLocation("thermal", "upgrade_augment_3"));
+	}
 }

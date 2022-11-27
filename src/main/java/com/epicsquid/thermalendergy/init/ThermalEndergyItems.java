@@ -12,15 +12,16 @@ import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateItemModelProvider;
 import com.tterrag.registrate.util.DataIngredient;
 import com.tterrag.registrate.util.entry.ItemEntry;
-import net.minecraft.core.Registry;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.TagKey;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.Tags;
 
@@ -49,6 +50,16 @@ public class ThermalEndergyItems {
 					new ResourceLocation(ThermalEndergy.MODID, "item/endergy_upgrade_1_lights"),
 					new ResourceLocation(ThermalEndergy.MODID, "item/endergy_upgrade_anim")))
 			.lang("Pristine Integral Components")
+			.recipe((item, p) -> ShapedRecipeBuilder.shaped(item.getEntry())
+					.pattern("IXI")
+					.pattern("GCG")
+					.pattern("IXI")
+					.define('I', ThermalEndergyTags.PRISMALIUM_INGOT)
+					.define('C', ThermalEndergyTags.UPGRADE_3)
+					.define('G', ItemTags.create(new ResourceLocation("forge", "gears/enderium")))
+					.define('X', Items.ENDER_EYE)
+					.unlockedBy("has_ingot", DataIngredient.tag(ThermalEndergyTags.PRISMALIUM_INGOT).getCritereon(p))
+					.save(p, p.safeId(item.getEntry())))
 			.register();
 
 	public static final ItemEntry<ItemCoFH> MELODIUM_UPGRADE = REGISTRATE.item("endergy_upgrade_2", props -> new AugmentItem(props,
@@ -62,6 +73,16 @@ public class ThermalEndergyItems {
 					new ResourceLocation(ThermalEndergy.MODID, "item/endergy_upgrade_2_lights"),
 					new ResourceLocation(ThermalEndergy.MODID, "item/endergy_upgrade_anim")))
 			.lang("Melodic Integral Components")
+			.recipe((item, p) -> ShapedRecipeBuilder.shaped(item.getEntry())
+					.pattern("IXI")
+					.pattern("GCG")
+					.pattern("IXI")
+					.define('I', ThermalEndergyTags.MELODIUM_INGOT)
+					.define('C', PRISMALIUM_UPGRADE.get())
+					.define('G', ItemTags.create(new ResourceLocation("forge", "gears/prismalium")))
+					.define('X', Items.SHULKER_SHELL)
+					.unlockedBy("has_ingot", DataIngredient.tag(ThermalEndergyTags.MELODIUM_INGOT).getCritereon(p))
+					.save(p, p.safeId(item.getEntry())))
 			.register();
 
 	public static final ItemEntry<ItemCoFH> STELLARIUM_UPGRADE = REGISTRATE.item("endergy_upgrade_3", props -> new AugmentItem(props,
@@ -75,16 +96,26 @@ public class ThermalEndergyItems {
 					new ResourceLocation(ThermalEndergy.MODID, "item/endergy_upgrade_3_lights"),
 					new ResourceLocation(ThermalEndergy.MODID, "item/endergy_upgrade_anim")))
 			.lang("Stellar Integral Components")
+			.recipe((item, p) -> ShapedRecipeBuilder.shaped(item.getEntry())
+					.pattern("IXI")
+					.pattern("GCG")
+					.pattern("IXI")
+					.define('I', ThermalEndergyTags.STELLARIUM_INGOT)
+					.define('C', MELODIUM_UPGRADE.get())
+					.define('G', ItemTags.create(new ResourceLocation("forge", "gears/melodium")))
+					.define('X', Blocks.CLAY)
+					.unlockedBy("has_ingot", DataIngredient.tag(ThermalEndergyTags.PRISMALIUM_INGOT).getCritereon(p))
+					.save(p, p.safeId(item.getEntry())))
 			.register();
 
 	public static ItemBuilder<ItemCoFH, Registrate> registerEndergyAlloy(String prefix, Rarity rarity) {
 		// Tags
-		var nugget = TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation("forge", "nuggets/" + prefix));
-		var dust = TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation("forge", "dusts/" + prefix));
-		var gear = TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation("forge", "gears/" + prefix));
-		var plate = TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation("forge", "plates/" + prefix));
-		var ingot = TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation("forge", "ingots/" + prefix));
-		var block = TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation("forge", "storage_blocks/" + prefix));
+		var nugget = ItemTags.create(new ResourceLocation("forge", "nuggets/" + prefix));
+		var dust = ItemTags.create(new ResourceLocation("forge", "dusts/" + prefix));
+		var gear = ItemTags.create(new ResourceLocation("forge", "gears/" + prefix));
+		var plate = ItemTags.create(new ResourceLocation("forge", "plates/" + prefix));
+		var ingot = ItemTags.create(new ResourceLocation("forge", "ingots/" + prefix));
+		var block = ItemTags.create(new ResourceLocation("forge", "storage_blocks/" + prefix));
 
 		REGISTRATE.item(prefix + "_nugget", ItemCoFH::new)
 				.properties(props -> props.tab(ThermalEndergy.CREATIVE_TAB).rarity(rarity))

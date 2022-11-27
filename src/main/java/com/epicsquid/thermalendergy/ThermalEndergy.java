@@ -3,14 +3,18 @@ package com.epicsquid.thermalendergy;
 import com.epicsquid.thermalendergy.init.ThermalEndergyBlocks;
 import com.epicsquid.thermalendergy.init.ThermalEndergyItems;
 import com.epicsquid.thermalendergy.init.ThermalEndergyLang;
+import com.epicsquid.thermalendergy.init.ThermalEndergyTags;
 import com.tterrag.registrate.Registrate;
+import net.minecraft.data.DataGenerator;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.data.ForgeBlockTagsProvider;
 import net.minecraftforge.common.util.Lazy;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 
 import javax.annotation.Nonnull;
 
@@ -31,6 +35,7 @@ public class ThermalEndergy {
 	public ThermalEndergy() {
 		// Register the setup method for modloading
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
+		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::gatherData);
 
 		// Init items
 		ThermalEndergyBlocks.classload();
@@ -39,6 +44,14 @@ public class ThermalEndergy {
 
 		// Register ourselves for server and other game events we are interested in
 		MinecraftForge.EVENT_BUS.register(this);
+	}
+
+	public void gatherData(GatherDataEvent event) {
+		DataGenerator generator = event.getGenerator();
+		if (event.includeServer()) {
+			ForgeBlockTagsProvider b = new ForgeBlockTagsProvider(generator, event.getExistingFileHelper());
+			generator.addProvider(new ThermalEndergyTags(generator, b, event.getExistingFileHelper()));
+		}
 	}
 
 	private void setup(final FMLCommonSetupEvent event) {
