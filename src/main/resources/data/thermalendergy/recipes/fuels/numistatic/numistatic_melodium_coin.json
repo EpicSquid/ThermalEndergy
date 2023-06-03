@@ -1,0 +1,7 @@
+{
+	"type": "thermal:numismatic_fuel",
+	"ingredient": {
+		"tag": "forge:coins/melodium"
+	},
+	"energy": 32000
+}
