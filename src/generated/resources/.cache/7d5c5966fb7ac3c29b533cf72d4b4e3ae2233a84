@@ -1,4 +1,4 @@
-// 1.19.2	2023-06-04T07:58:53.1055188	Registrate Provider for thermalendergy [Recipes, Advancements, Loot tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
+// 1.19.2	2023-06-04T08:00:37.6025014	Registrate Provider for thermalendergy [Recipes, Advancements, Loot tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
 31ad6bd54600ffb0153ad94a9df74edbff4108d6 assets/thermalendergy/blockstates/melodium_block.json
 bbf858ae6907fd73ae4b3236bf6270a5368c7f26 assets/thermalendergy/blockstates/prismalium_block.json
 6fba59de4c38689fedd3f150d68cd732d722e939 assets/thermalendergy/blockstates/stellarium_block.json
@@ -130,7 +130,7 @@ bdb70a37b7834a86b9ea43bdfae99840b1b082df data/thermalendergy/recipes/endergy_upg
 2068167e2c641ed556836af9112a00c7443560a9 data/thermalendergy/recipes/ingot_to_melodium_block.json
 aa58bb07d81edf6f01b00918e6868283d3da9aac data/thermalendergy/recipes/ingot_to_prismalium_block.json
 e678cdf1b3aa2b745eaaabc59b765490b712b4e2 data/thermalendergy/recipes/ingot_to_stellarium_block.json
-a8226462da2f2d864e2fd6ad89c6d644ce406f14 data/thermalendergy/recipes/melodic_range_augment.json
+37f2d84f60251241a050cf5600152e099635b98e data/thermalendergy/recipes/melodic_range_augment.json
 18a0d63f738d0c0466599125fc9be52068db669d data/thermalendergy/recipes/melodium_gear.json
 d1bfdf4f23ee04ec6ddba4e906b4e14b05c3cfb7 data/thermalendergy/recipes/melodium_ingot.json
 51213ce671fd69711d8b236a14b5ad6f0f9582a4 data/thermalendergy/recipes/melodium_ingot_from_block.json
