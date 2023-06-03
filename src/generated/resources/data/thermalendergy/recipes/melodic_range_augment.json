@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "G": {
+      "tag": "forge:gears/enderium"
+    },
+    "P": {
+      "tag": "forge:ingots/melodium"
+    },
+    "V": {
+      "tag": "forge:gears/diamond"
+    }
+  },
+  "pattern": [
+    " G ",
+    "PVP",
+    " G "
+  ],
+  "result": {
+    "item": "thermalendergy:melodic_range_augment"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "G": {
+      "tag": "forge:gears/signalum"
+    },
+    "P": {
+      "tag": "forge:plates/prismalium"
+    },
+    "V": {
+      "item": "thermalendergy:vibrating_core"
+    }
+  },
+  "pattern": [
+    " G ",
+    "PVP",
+    " G "
+  ],
+  "result": {
+    "item": "thermalendergy:resonant_catalyst_augment"
+  }
+}

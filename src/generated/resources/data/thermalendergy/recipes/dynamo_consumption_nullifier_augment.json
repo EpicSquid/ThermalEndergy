@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "G": {
+      "tag": "forge:gears/lumium"
+    },
+    "P": {
+      "tag": "forge:plates/melodium"
+    },
+    "V": {
+      "tag": "thermal:glass/hardened"
+    }
+  },
+  "pattern": [
+    " G ",
+    "PVP",
+    " G "
+  ],
+  "result": {
+    "item": "thermalendergy:dynamo_consumption_nullifier_augment"
+  }
+}

@@ -28,7 +28,7 @@ import net.minecraft.world.item.Rarity.UNCOMMON
 import net.minecraft.world.item.crafting.Ingredient
 import net.minecraft.world.level.block.Blocks
 import net.minecraftforge.client.model.generators.ModelFile.UncheckedModelFile
-import net.minecraftforge.common.Tags.Items
+import net.minecraftforge.common.Tags
 
 object ItemRegistry {
 	private val countPredicate = ResourceLocation("count")
@@ -143,8 +143,24 @@ object ItemRegistry {
 			.register()
 	}
 
+	val vibratingCore: Item by registryEntry {
+		registrate.item<Item>("vibrating_core", ::Item)
+			.lang("Vibrating Core")
+			.recipe { ctx, p ->
+				ShapedRecipeBuilder.shaped(ctx.entry)
+					.pattern("G  ")
+					.pattern(" E ")
+					.pattern("  G")
+					.define('G', Tags.Items.INGOTS_GOLD)
+					.define('E', Items.ECHO_SHARD)
+					.unlockedBy("has_shard", DataIngredient.items(Items.ECHO_SHARD).getCritereon(p))
+					.save(p, p.safeId(ctx.entry))
+			}
+			.register()
+	}
+
 	val melodicRangeAugment: ItemCoFH by registryEntry {
-		registrate.item<ItemCoFH>("melodium_range_augment") {props ->
+		registrate.item<ItemCoFH>("melodic_range_augment") { props ->
 			AugmentItem(
 				props,
 				AugmentDataHelper.builder()
@@ -153,7 +169,147 @@ object ItemRegistry {
 					.build()
 			).setShowInGroups(ThermalFlags.getFlag(ThermalFlags.FLAG_AREA_AUGMENTS))
 		}
-			.lang("Melodic Range Augment")
+			.recipe { ctx, p ->
+				ShapedRecipeBuilder.shaped(ctx.entry)
+					.pattern(" G ")
+					.pattern("PVP")
+					.pattern(" G ")
+					.define('V', ItemTags.create(ResourceLocation("forge", "gems/diamond")))
+					.define('G', ItemTags.create(ResourceLocation("forge", "gears/enderium")))
+					.define('P', ItemTags.create(ResourceLocation("forge", "ingots/melodium")))
+					.unlockedBy("has_ingot", DataIngredient.tag(ThermalEndergyTags.melodiumIngot).getCritereon(p))
+					.save(p, p.safeId(ctx.entry))
+			}
+			.lang("Extended Range Augment")
+			.register()
+	}
+
+	val dynamoConsumptionNullifier: ItemCoFH by registryEntry {
+		registrate.item<ItemCoFH>("dynamo_consumption_nullifier_augment") { props ->
+			AugmentItem(
+				props,
+				AugmentDataHelper.builder()
+					.type(NBTTags.TAG_AUGMENT_TYPE_DYNAMO)
+					.mod(NBTTags.TAG_AUGMENT_DYNAMO_ENERGY, 1.5f)
+					.build()
+			).setShowInGroups(ThermalFlags.getFlag(ThermalFlags.FLAG_DYNAMO_AUGMENTS))
+		}
+			.recipe { ctx, p ->
+				ShapedRecipeBuilder.shaped(ctx.entry)
+					.pattern(" G ")
+					.pattern("PVP")
+					.pattern(" G ")
+					.define('V', ItemTags.create(ResourceLocation("thermal", "glass/hardened")))
+					.define('G', ItemTags.create(ResourceLocation("forge", "gears/lumium")))
+					.define('P', ItemTags.create(ResourceLocation("forge", "plates/melodium")))
+					.unlockedBy("has_ingot", DataIngredient.tag(ThermalEndergyTags.melodiumIngot).getCritereon(p))
+					.save(p, p.safeId(ctx.entry))
+			}
+			.lang("Consumption Nullifier Augment")
+			.register()
+	}
+
+	val dynamoFuelNullifier: ItemCoFH by registryEntry {
+		registrate.item<ItemCoFH>("dynamo_fuel_nullifier_augment") { props ->
+			AugmentItem(
+				props,
+				AugmentDataHelper.builder()
+					.type(NBTTags.TAG_AUGMENT_TYPE_DYNAMO)
+					.mod(NBTTags.TAG_AUGMENT_DYNAMO_POWER, 3.0f)
+					.mod(NBTTags.TAG_AUGMENT_DYNAMO_ENERGY, 0.8f)
+					.build()
+			).setShowInGroups(ThermalFlags.getFlag(ThermalFlags.FLAG_DYNAMO_AUGMENTS))
+		}
+			.recipe { ctx, p ->
+				ShapedRecipeBuilder.shaped(ctx.entry)
+					.pattern(" G ")
+					.pattern("PVP")
+					.pattern(" G ")
+					.define('V', ItemTags.create(ResourceLocation("thermal", "glass/hardened")))
+					.define('G', ItemTags.create(ResourceLocation("forge", "gears/signalum")))
+					.define('P', ItemTags.create(ResourceLocation("forge", "plates/prismalium")))
+					.unlockedBy("has_ingot", DataIngredient.tag(ThermalEndergyTags.melodiumIngot).getCritereon(p))
+					.save(p, p.safeId(ctx.entry))
+			}
+			.lang("Fuel Nullifier Augment")
+			.register()
+	}
+
+	val energyNullifier: ItemCoFH by registryEntry {
+		registrate.item<ItemCoFH>("energy_nullifier_augment") { props ->
+			AugmentItem(
+				props,
+				AugmentDataHelper.builder()
+					.type(NBTTags.TAG_AUGMENT_TYPE_MACHINE)
+					.mod(NBTTags.TAG_AUGMENT_MACHINE_POWER, -0.3f)
+					.mod(NBTTags.TAG_AUGMENT_MACHINE_ENERGY, 0.5f)
+					.build()
+			).setShowInGroups(ThermalFlags.getFlag(ThermalFlags.FLAG_MACHINE_AUGMENTS))
+		}
+			.recipe { ctx, p ->
+				ShapedRecipeBuilder.shaped(ctx.entry)
+					.pattern(" G ")
+					.pattern("PVP")
+					.pattern(" G ")
+					.define('V', vibratingCore)
+					.define('G', ItemTags.create(ResourceLocation("forge", "gears/lumium")))
+					.define('P', ItemTags.create(ResourceLocation("forge", "plates/melodium")))
+					.unlockedBy("has_ingot", DataIngredient.tag(ThermalEndergyTags.melodiumIngot).getCritereon(p))
+					.save(p, p.safeId(ctx.entry))
+			}
+			.lang("Energy Nullifier Augment")
+			.register()
+	}
+
+	val efficiencyNullifier: ItemCoFH by registryEntry {
+		registrate.item<ItemCoFH>("efficiency_nullifier_augment") { props ->
+			AugmentItem(
+				props,
+				AugmentDataHelper.builder()
+					.type(NBTTags.TAG_AUGMENT_TYPE_MACHINE)
+					.mod(NBTTags.TAG_AUGMENT_MACHINE_POWER, 3.0f)
+					.mod(NBTTags.TAG_AUGMENT_MACHINE_ENERGY, 1.5f)
+					.build()
+			).setShowInGroups(ThermalFlags.getFlag(ThermalFlags.FLAG_MACHINE_AUGMENTS))
+		}
+			.recipe { ctx, p ->
+				ShapedRecipeBuilder.shaped(ctx.entry)
+					.pattern(" G ")
+					.pattern("PVP")
+					.pattern(" G ")
+					.define('V', vibratingCore)
+					.define('G', ItemTags.create(ResourceLocation("forge", "gears/enderium")))
+					.define('P', ItemTags.create(ResourceLocation("forge", "plates/melodium")))
+					.unlockedBy("has_ingot", DataIngredient.tag(ThermalEndergyTags.melodiumIngot).getCritereon(p))
+					.save(p, p.safeId(ctx.entry))
+			}
+			.lang("Efficiency Nullifier Augment")
+			.register()
+	}
+
+	val resonantCatalyst: ItemCoFH by registryEntry {
+		registrate.item<ItemCoFH>("resonant_catalyst_augment") { props ->
+			AugmentItem(
+				props,
+				AugmentDataHelper.builder()
+					.type(NBTTags.TAG_AUGMENT_TYPE_MACHINE)
+					.mod(NBTTags.TAG_AUGMENT_MACHINE_CATALYST, 0.15f)
+					.mod(NBTTags.TAG_AUGMENT_MACHINE_ENERGY, 1.5f)
+					.build()
+			).setShowInGroups(ThermalFlags.getFlag(ThermalFlags.FLAG_MACHINE_AUGMENTS))
+		}
+			.recipe { ctx, p ->
+				ShapedRecipeBuilder.shaped(ctx.entry)
+					.pattern(" G ")
+					.pattern("PVP")
+					.pattern(" G ")
+					.define('V', vibratingCore)
+					.define('G', ItemTags.create(ResourceLocation("forge", "gears/signalum")))
+					.define('P', ItemTags.create(ResourceLocation("forge", "plates/prismalium")))
+					.unlockedBy("has_ingot", DataIngredient.tag(ThermalEndergyTags.melodiumIngot).getCritereon(p))
+					.save(p, p.safeId(ctx.entry))
+			}
+			.lang("Catalyst Resonation Chamber Augment")
 			.register()
 	}
 
@@ -188,7 +344,7 @@ object ItemRegistry {
 					.pattern("INI")
 					.pattern(" I ")
 					.define('I', ingot)
-					.define('N', Items.NUGGETS_IRON)
+					.define('N', Tags.Items.NUGGETS_IRON)
 					.unlockedBy("has_ingot", DataIngredient.tag(ingot).getCritereon(p))
 					.save(p, p.safeId(item.entry))
 			}

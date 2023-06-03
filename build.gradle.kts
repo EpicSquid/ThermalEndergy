@@ -133,6 +133,7 @@ dependencies {
 	implementation(fg.deobf("com.teamcofh:cofh_core:$minecraftVersion-10.0.0.29"))
 	implementation(fg.deobf("com.teamcofh:thermal_core:$minecraftVersion-10.0.0.1"))
 	implementation(fg.deobf("com.teamcofh:thermal_foundation:$minecraftVersion-10.0.0.38"))
+	runtimeOnly(fg.deobf("com.teamcofh:thermal_innovation:$minecraftVersion-10.0.0.16"))
 	runtimeOnly(fg.deobf("com.teamcofh:thermal_expansion:$minecraftVersion-10.0.0.19"))
 }
 

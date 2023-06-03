@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "E": {
+      "item": "minecraft:echo_shard"
+    },
+    "G": {
+      "tag": "forge:ingots/gold"
+    }
+  },
+  "pattern": [
+    "G  ",
+    " E ",
+    "  G"
+  ],
+  "result": {
+    "item": "thermalendergy:vibrating_core"
+  }
+}

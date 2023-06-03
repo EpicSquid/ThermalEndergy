@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "G": {
+      "tag": "forge:gears/enderium"
+    },
+    "P": {
+      "tag": "forge:plates/melodium"
+    },
+    "V": {
+      "item": "thermalendergy:vibrating_core"
+    }
+  },
+  "pattern": [
+    " G ",
+    "PVP",
+    " G "
+  ],
+  "result": {
+    "item": "thermalendergy:efficiency_nullifier_augment"
+  }
+}

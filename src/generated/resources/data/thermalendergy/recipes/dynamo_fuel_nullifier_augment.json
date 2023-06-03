@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "G": {
+      "tag": "forge:gears/signalum"
+    },
+    "P": {
+      "tag": "forge:plates/prismalium"
+    },
+    "V": {
+      "tag": "thermal:glass/hardened"
+    }
+  },
+  "pattern": [
+    " G ",
+    "PVP",
+    " G "
+  ],
+  "result": {
+    "item": "thermalendergy:dynamo_fuel_nullifier_augment"
+  }
+}
