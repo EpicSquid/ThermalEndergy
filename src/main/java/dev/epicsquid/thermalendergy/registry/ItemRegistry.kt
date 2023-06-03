@@ -133,13 +133,27 @@ object ItemRegistry {
 					.pattern("IXI")
 					.pattern("GCG")
 					.pattern("IXI")
-					.define('I', ThermalEndergyTags.Companion.stellariumIngot)
+					.define('I', ThermalEndergyTags.stellariumIngot)
 					.define('C', melodiumUpgrade)
 					.define('G', ItemTags.create(ResourceLocation("forge", "gears/melodium")))
 					.define('X', Blocks.CLAY)
-					.unlockedBy("has_ingot", DataIngredient.tag(ThermalEndergyTags.Companion.prismaliumIngot).getCritereon(p))
+					.unlockedBy("has_ingot", DataIngredient.tag(ThermalEndergyTags.prismaliumIngot).getCritereon(p))
 					.save(p, p.safeId(item.entry))
 			}
+			.register()
+	}
+
+	val melodicRangeAugment: ItemCoFH by registryEntry {
+		registrate.item<ItemCoFH>("melodium_range_augment") {props ->
+			AugmentItem(
+				props,
+				AugmentDataHelper.builder()
+					.type(NBTTags.TAG_AUGMENT_TYPE_AREA_EFFECT)
+					.mod(NBTTags.TAG_AUGMENT_RADIUS, 3f)
+					.build()
+			).setShowInGroups(ThermalFlags.getFlag(ThermalFlags.FLAG_AREA_AUGMENTS))
+		}
+			.lang("Melodic Range Augment")
 			.register()
 	}
 
