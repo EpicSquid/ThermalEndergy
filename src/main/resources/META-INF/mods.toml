@@ -30,3 +30,9 @@ mandatory = false
 versionRange = "[10.0,)"
 ordering = "NONE"
 side = "BOTH"
+[[dependencies.thermalendergy]]
+modId = "kotlinforforge"
+mandatory = true
+versionRange = "[3.11.0,)"
+ordering = "NONE"
+side = "BOTH"
