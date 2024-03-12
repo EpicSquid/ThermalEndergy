@@ -1,38 +1,37 @@
 modLoader = "javafml"
-loaderVersion = "[43,)"
-issueTrackerURL = "https://github.com/EpicSquid/ThermalEndergy/issues"
-license = "MIT"
+loaderVersion = "${loaderVersionRange}"
+license = "${modLicense}"
+#issueTrackerURL="https://change.me.to.your.issue.tracker.example.invalid/" #optional
 [[mods]]
-modId = "thermalendergy"
-version = "${file.jarVersion}"
-displayName = "Thermal Endergy"
-displayURL = "https://minecraft.curseforge.com/projects/thermal-endergy"
-credits = "KingLemming and co for great support!"
-authors = "EpicSquid"
-description = '''
-Adding more of the balanced content you love to thermal
-'''
-[[dependencies.thermalendergy]]
+modId = "${modId}"
+version = "${modVersion}"
+displayName = "${modName}"
+# A URL to query for updates for this mod. See the JSON update specification https://docs.minecraftforge.net/en/latest/misc/updatechecker/
+#updateJSONURL="https://change.me.example.invalid/updates.json" #optional
+# A URL for the "homepage" for this mod, displayed in the mod UI
+#displayURL="https://change.me.to.your.mods.homepage.example.invalid/" #optional
+# A file name (in the root of the mod JAR) containing a logo for display
+#logoFile="examplemod.png" #optional
+# A text field displayed in the mod UI
+#credits="" #optional
+# A text field displayed in the mod UI
+authors = "${modAuthors}"
+description = '''${modDescription}'''
+[[dependencies.${ modId }]]
 modId = "forge"
 mandatory = true
-versionRange = "[43.2,)"
+versionRange = "${forgeVersionRange}"
 ordering = "NONE"
 side = "BOTH"
-[[dependencies.thermalendergy]]
+[[dependencies.${ modId }]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.19.2,)"
+versionRange = "${minecraftVersionRange}"
 ordering = "NONE"
 side = "BOTH"
-[[dependencies.thermalendergy]]
+[[dependencies.${ modId }]]
 modId = "thermal"
 mandatory = false
-versionRange = "[10.0,)"
-ordering = "NONE"
-side = "BOTH"
-[[dependencies.thermalendergy]]
-modId = "kotlinforforge"
-mandatory = true
-versionRange = "[3.11.0,)"
+versionRange = "${thermalVersionRange}"
 ordering = "NONE"
 side = "BOTH"

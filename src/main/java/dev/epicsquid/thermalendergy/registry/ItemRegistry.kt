@@ -1,12 +1,11 @@
 package dev.epicsquid.thermalendergy.registry
 
-import cofh.core.item.CoinItem
-import cofh.core.item.CountedItem
-import cofh.core.item.ItemCoFH
+import cofh.core.common.item.CoinItem
+import cofh.core.common.item.CountedItem
+import cofh.core.common.item.ItemCoFH
 import cofh.core.util.helpers.AugmentDataHelper
 import cofh.lib.util.constants.NBTTags
-import cofh.thermal.lib.common.ThermalFlags
-import cofh.thermal.lib.item.AugmentItem
+import cofh.thermal.lib.common.item.AugmentItem
 import com.tterrag.registrate.Registrate
 import com.tterrag.registrate.builders.ItemBuilder
 import com.tterrag.registrate.providers.DataGenContext
@@ -14,15 +13,19 @@ import com.tterrag.registrate.providers.RegistrateItemModelProvider
 import com.tterrag.registrate.providers.RegistrateRecipeProvider
 import com.tterrag.registrate.util.DataIngredient
 import dev.epicsquid.thermalendergy.ThermalEndergy
+import dev.epicsquid.thermalendergy.ThermalEndergy.Companion.registrate
 import dev.epicsquid.thermalendergy.data.ThermalEndergyTags
 import dev.epicsquid.thermalendergy.utils.registryEntry
+import net.minecraft.data.recipes.RecipeCategory
 import net.minecraft.data.recipes.ShapedRecipeBuilder
 import net.minecraft.data.recipes.ShapelessRecipeBuilder
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.tags.ItemTags
-import net.minecraft.world.item.*
+import net.minecraft.world.item.Item
 import net.minecraft.world.item.Item.Properties
+import net.minecraft.world.item.Items
+import net.minecraft.world.item.Rarity
 import net.minecraft.world.item.Rarity.RARE
 import net.minecraft.world.item.Rarity.UNCOMMON
 import net.minecraft.world.item.crafting.Ingredient
@@ -32,7 +35,6 @@ import net.minecraftforge.common.Tags
 
 object ItemRegistry {
 	private val countPredicate = ResourceLocation("count")
-	private val registrate = ThermalEndergy.registrate
 
 	val prismaliumIngot = registerEndergyAlloy("prismalium", UNCOMMON).register()
 	val melodiumIngot = registerEndergyAlloy("melodium", RARE).register()
@@ -46,9 +48,8 @@ object ItemRegistry {
 					.type(NBTTags.TAG_AUGMENT_TYPE_UPGRADE)
 					.mod(NBTTags.TAG_AUGMENT_BASE_MOD, 6.0f)
 					.build()
-			).setShowInGroups(ThermalFlags.getFlag(ThermalFlags.FLAG_UPGRADE_AUGMENTS))
+			)
 		}
-			.tab { ThermalEndergy.tab }
 			.model { item: DataGenContext<Item, ItemCoFH>, p: RegistrateItemModelProvider ->
 				p.generated(
 					item,
@@ -59,7 +60,7 @@ object ItemRegistry {
 			}
 			.lang("Pristine Integral Components")
 			.recipe { item: DataGenContext<Item, ItemCoFH>, p: RegistrateRecipeProvider ->
-				ShapedRecipeBuilder.shaped(item.entry)
+				ShapedRecipeBuilder.shaped(RecipeCategory.MISC, item.entry)
 					.pattern("IXI")
 					.pattern("GCG")
 					.pattern("IXI")
@@ -81,9 +82,8 @@ object ItemRegistry {
 					.type(NBTTags.TAG_AUGMENT_TYPE_UPGRADE)
 					.mod(NBTTags.TAG_AUGMENT_BASE_MOD, 8.5f)
 					.build()
-			).setShowInGroups(ThermalFlags.getFlag(ThermalFlags.FLAG_UPGRADE_AUGMENTS))
+			)
 		}
-			.tab { ThermalEndergy.tab }
 			.model { item: DataGenContext<Item, ItemCoFH>, p: RegistrateItemModelProvider ->
 				p.generated(
 					item,
@@ -94,7 +94,7 @@ object ItemRegistry {
 			}
 			.lang("Melodic Integral Components")
 			.recipe { item: DataGenContext<Item?, ItemCoFH>, p: RegistrateRecipeProvider ->
-				ShapedRecipeBuilder.shaped(item.entry)
+				ShapedRecipeBuilder.shaped(RecipeCategory.MISC, item.entry)
 					.pattern("IXI")
 					.pattern("GCG")
 					.pattern("IXI")
@@ -116,9 +116,8 @@ object ItemRegistry {
 					.type(NBTTags.TAG_AUGMENT_TYPE_UPGRADE)
 					.mod(NBTTags.TAG_AUGMENT_BASE_MOD, 12f)
 					.build()
-			).setShowInGroups(ThermalFlags.getFlag(ThermalFlags.FLAG_UPGRADE_AUGMENTS))
+			)
 		}
-			.tab { ThermalEndergy.tab }
 			.model { item: DataGenContext<Item, ItemCoFH>, p: RegistrateItemModelProvider ->
 				p.generated(
 					item,
@@ -129,7 +128,7 @@ object ItemRegistry {
 			}
 			.lang("Stellar Integral Components")
 			.recipe { item: DataGenContext<Item, ItemCoFH>, p: RegistrateRecipeProvider ->
-				ShapedRecipeBuilder.shaped(item.entry)
+				ShapedRecipeBuilder.shaped(RecipeCategory.MISC, item.entry)
 					.pattern("IXI")
 					.pattern("GCG")
 					.pattern("IXI")
@@ -147,7 +146,7 @@ object ItemRegistry {
 		registrate.item<Item>("vibrating_core", ::Item)
 			.lang("Vibrating Core")
 			.recipe { ctx, p ->
-				ShapedRecipeBuilder.shaped(ctx.entry)
+				ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ctx.entry)
 					.pattern("G  ")
 					.pattern(" E ")
 					.pattern("  G")
@@ -167,10 +166,10 @@ object ItemRegistry {
 					.type(NBTTags.TAG_AUGMENT_TYPE_AREA_EFFECT)
 					.mod(NBTTags.TAG_AUGMENT_RADIUS, 3f)
 					.build()
-			).setShowInGroups(ThermalFlags.getFlag(ThermalFlags.FLAG_AREA_AUGMENTS))
+			)
 		}
 			.recipe { ctx, p ->
-				ShapedRecipeBuilder.shaped(ctx.entry)
+				ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ctx.entry)
 					.pattern(" G ")
 					.pattern("PVP")
 					.pattern(" G ")
@@ -192,10 +191,10 @@ object ItemRegistry {
 					.type(NBTTags.TAG_AUGMENT_TYPE_DYNAMO)
 					.mod(NBTTags.TAG_AUGMENT_DYNAMO_ENERGY, 1.5f)
 					.build()
-			).setShowInGroups(ThermalFlags.getFlag(ThermalFlags.FLAG_DYNAMO_AUGMENTS))
+			)
 		}
 			.recipe { ctx, p ->
-				ShapedRecipeBuilder.shaped(ctx.entry)
+				ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ctx.entry)
 					.pattern(" G ")
 					.pattern("PVP")
 					.pattern(" G ")
@@ -218,10 +217,10 @@ object ItemRegistry {
 					.mod(NBTTags.TAG_AUGMENT_DYNAMO_POWER, 3.0f)
 					.mod(NBTTags.TAG_AUGMENT_DYNAMO_ENERGY, 0.8f)
 					.build()
-			).setShowInGroups(ThermalFlags.getFlag(ThermalFlags.FLAG_DYNAMO_AUGMENTS))
+			)
 		}
 			.recipe { ctx, p ->
-				ShapedRecipeBuilder.shaped(ctx.entry)
+				ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ctx.entry)
 					.pattern(" G ")
 					.pattern("PVP")
 					.pattern(" G ")
@@ -244,10 +243,10 @@ object ItemRegistry {
 					.mod(NBTTags.TAG_AUGMENT_MACHINE_POWER, -0.3f)
 					.mod(NBTTags.TAG_AUGMENT_MACHINE_ENERGY, 0.5f)
 					.build()
-			).setShowInGroups(ThermalFlags.getFlag(ThermalFlags.FLAG_MACHINE_AUGMENTS))
+			)
 		}
 			.recipe { ctx, p ->
-				ShapedRecipeBuilder.shaped(ctx.entry)
+				ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ctx.entry)
 					.pattern(" G ")
 					.pattern("PVP")
 					.pattern(" G ")
@@ -270,10 +269,10 @@ object ItemRegistry {
 					.mod(NBTTags.TAG_AUGMENT_MACHINE_POWER, 3.0f)
 					.mod(NBTTags.TAG_AUGMENT_MACHINE_ENERGY, 1.5f)
 					.build()
-			).setShowInGroups(ThermalFlags.getFlag(ThermalFlags.FLAG_MACHINE_AUGMENTS))
+			)
 		}
 			.recipe { ctx, p ->
-				ShapedRecipeBuilder.shaped(ctx.entry)
+				ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ctx.entry)
 					.pattern(" G ")
 					.pattern("PVP")
 					.pattern(" G ")
@@ -296,10 +295,10 @@ object ItemRegistry {
 					.mod(NBTTags.TAG_AUGMENT_MACHINE_CATALYST, 0.15f)
 					.mod(NBTTags.TAG_AUGMENT_MACHINE_ENERGY, 1.5f)
 					.build()
-			).setShowInGroups(ThermalFlags.getFlag(ThermalFlags.FLAG_MACHINE_AUGMENTS))
+			)
 		}
 			.recipe { ctx, p ->
-				ShapedRecipeBuilder.shaped(ctx.entry)
+				ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ctx.entry)
 					.pattern(" G ")
 					.pattern("PVP")
 					.pattern(" G ")
@@ -322,24 +321,24 @@ object ItemRegistry {
 		val ingot = ItemTags.create(ResourceLocation("forge", "ingots/$prefix"))
 		val block = ItemTags.create(ResourceLocation("forge", "storage_blocks/$prefix"))
 		registrate.item<ItemCoFH>(prefix + "_nugget") { builder: Properties -> ItemCoFH(builder) }
-			.properties { props: Properties -> props.tab(ThermalEndergy.tab).rarity(rarity) }
+			.properties { props: Properties -> props.rarity(rarity) }
 			.tag(nugget)
 			.recipe { item: DataGenContext<Item?, ItemCoFH>, p: RegistrateRecipeProvider ->
-				ShapelessRecipeBuilder.shapeless(item.entry, 9)
+				ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, item.entry, 9)
 					.requires(ingot)
 					.unlockedBy("has_ingot", DataIngredient.tag(ingot).getCritereon(p))
 					.save(p, p.safeId(item.entry))
 			}
 			.register()
 		registrate.item<ItemCoFH>(prefix + "_dust") { builder: Properties -> ItemCoFH(builder) }
-			.properties { props: Properties -> props.tab(ThermalEndergy.tab).rarity(rarity) }
+			.properties { props: Properties -> props.rarity(rarity) }
 			.tag(dust)
 			.register()
 		registrate.item<ItemCoFH>(prefix + "_gear") { builder: Properties -> ItemCoFH(builder) }
-			.properties { props: Properties -> props.tab(ThermalEndergy.tab).rarity(rarity) }
+			.properties { props: Properties -> props.rarity(rarity) }
 			.tag(gear)
 			.recipe { item: DataGenContext<Item, ItemCoFH>, p: RegistrateRecipeProvider ->
-				ShapedRecipeBuilder.shaped(item.entry)
+				ShapedRecipeBuilder.shaped(RecipeCategory.MISC, item.entry)
 					.pattern(" I ")
 					.pattern("INI")
 					.pattern(" I ")
@@ -350,7 +349,7 @@ object ItemRegistry {
 			}
 			.register()
 		registrate.item<CountedItem>(prefix + "_plate") { builder: Properties -> CountedItem(builder) }
-			.properties { props: Properties -> props.tab(ThermalEndergy.tab).rarity(rarity) }
+			.properties { props: Properties -> props.rarity(rarity) }
 			.model { item: DataGenContext<Item, CountedItem>, p: RegistrateItemModelProvider ->
 				getCountModel(
 					p,
@@ -362,7 +361,7 @@ object ItemRegistry {
 			.tag(plate)
 			.register()
 		registrate.item<CoinItem>(prefix + "_coin") { builder: Properties -> CoinItem(builder) }
-			.properties { props: Properties -> props.tab(ThermalEndergy.tab).rarity(rarity) }
+			.properties { props: Properties -> props.rarity(rarity) }
 			.model { item: DataGenContext<Item, CoinItem>, p: RegistrateItemModelProvider ->
 				getCountModel(
 					p,
@@ -373,17 +372,17 @@ object ItemRegistry {
 			}
 			.register()
 		return registrate.item<ItemCoFH>(prefix + "_ingot") { builder: Properties -> ItemCoFH(builder) }
-			.properties { props: Properties -> props.tab(ThermalEndergy.tab).rarity(rarity) }
+			.properties { props: Properties -> props.rarity(rarity) }
 			.tag(ingot)
 			.recipe { item: DataGenContext<Item, ItemCoFH>, p: RegistrateRecipeProvider ->
-				SimpleCookingRecipeBuilder.smelting(Ingredient.of(dust), item.entry, 0f, 200)
+				SimpleCookingRecipeBuilder.smelting(Ingredient.of(dust), RecipeCategory.MISC, item.entry, 0f, 200)
 					.unlockedBy("has_dust", DataIngredient.tag(dust).getCritereon(p))
 					.save(p, ResourceLocation(p.safeId(item.entry).namespace, p.safeId(item.entry).path + "_from_dust"))
-				ShapelessRecipeBuilder.shapeless(item.entry)
+				ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, item.entry)
 					.requires(Ingredient.of(nugget), 9)
 					.unlockedBy("has_ingot", DataIngredient.tag(ingot).getCritereon(p))
 					.save(p, p.safeId(item.entry))
-				ShapelessRecipeBuilder.shapeless(item.entry, 9)
+				ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, item.entry, 9)
 					.requires(block)
 					.unlockedBy("has_block", DataIngredient.tag(block).getCritereon(p))
 					.save(p, ResourceLocation(p.safeId(item.entry).namespace, p.safeId(item.entry).path + "_from_block"))
