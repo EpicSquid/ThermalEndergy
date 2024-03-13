@@ -14,9 +14,9 @@ import com.tterrag.registrate.providers.RegistrateRecipeProvider
 import com.tterrag.registrate.util.DataIngredient
 import dev.epicsquid.thermalendergy.ThermalEndergy
 import dev.epicsquid.thermalendergy.ThermalEndergy.Companion.registrate
-import dev.epicsquid.thermalendergy.data.ThermalEndergyTags
 import dev.epicsquid.thermalendergy.utils.registryEntry
 import net.minecraft.data.recipes.RecipeCategory
+import net.minecraft.data.recipes.RecipeCategory.MISC
 import net.minecraft.data.recipes.ShapedRecipeBuilder
 import net.minecraft.data.recipes.ShapelessRecipeBuilder
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder
@@ -60,14 +60,14 @@ object ItemRegistry {
 			}
 			.lang("Pristine Integral Components")
 			.recipe { item: DataGenContext<Item, ItemCoFH>, p: RegistrateRecipeProvider ->
-				ShapedRecipeBuilder.shaped(RecipeCategory.MISC, item.entry)
+				ShapedRecipeBuilder.shaped(MISC, item.entry)
 					.pattern("IXI")
 					.pattern("GCG")
 					.pattern("IXI")
 					.define('I', ThermalEndergyTags.prismaliumIngot)
 					.define('C', ThermalEndergyTags.upgrade3)
 					.define('G', ItemTags.create(ResourceLocation("forge", "gears/enderium")))
-					.define('X', net.minecraft.world.item.Items.ENDER_EYE)
+					.define('X', Items.ENDER_EYE)
 					.unlockedBy("has_ingot", DataIngredient.tag(ThermalEndergyTags.prismaliumIngot).getCritereon(p))
 					.save(p, p.safeId(item.entry))
 			}
@@ -94,15 +94,15 @@ object ItemRegistry {
 			}
 			.lang("Melodic Integral Components")
 			.recipe { item: DataGenContext<Item?, ItemCoFH>, p: RegistrateRecipeProvider ->
-				ShapedRecipeBuilder.shaped(RecipeCategory.MISC, item.entry)
+				ShapedRecipeBuilder.shaped(MISC, item.entry)
 					.pattern("IXI")
 					.pattern("GCG")
 					.pattern("IXI")
 					.define('I', ThermalEndergyTags.melodiumIngot)
 					.define('C', prismaliumUpgrade)
 					.define('G', ItemTags.create(ResourceLocation("forge", "gears/prismalium")))
-					.define('X', net.minecraft.world.item.Items.SHULKER_SHELL)
-					.unlockedBy("has_ingot", DataIngredient.tag(ThermalEndergyTags.Companion.melodiumIngot).getCritereon(p))
+					.define('X', Items.SHULKER_SHELL)
+					.unlockedBy("has_ingot", DataIngredient.tag(ThermalEndergyTags.melodiumIngot).getCritereon(p))
 					.save(p, p.safeId(item.entry))
 			}
 			.register()
@@ -128,7 +128,7 @@ object ItemRegistry {
 			}
 			.lang("Stellar Integral Components")
 			.recipe { item: DataGenContext<Item, ItemCoFH>, p: RegistrateRecipeProvider ->
-				ShapedRecipeBuilder.shaped(RecipeCategory.MISC, item.entry)
+				ShapedRecipeBuilder.shaped(MISC, item.entry)
 					.pattern("IXI")
 					.pattern("GCG")
 					.pattern("IXI")
@@ -146,7 +146,7 @@ object ItemRegistry {
 		registrate.item<Item>("vibrating_core", ::Item)
 			.lang("Vibrating Core")
 			.recipe { ctx, p ->
-				ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ctx.entry)
+				ShapedRecipeBuilder.shaped(MISC, ctx.entry)
 					.pattern("G  ")
 					.pattern(" E ")
 					.pattern("  G")
@@ -169,7 +169,7 @@ object ItemRegistry {
 			)
 		}
 			.recipe { ctx, p ->
-				ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ctx.entry)
+				ShapedRecipeBuilder.shaped(MISC, ctx.entry)
 					.pattern(" G ")
 					.pattern("PVP")
 					.pattern(" G ")
@@ -194,7 +194,7 @@ object ItemRegistry {
 			)
 		}
 			.recipe { ctx, p ->
-				ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ctx.entry)
+				ShapedRecipeBuilder.shaped(MISC, ctx.entry)
 					.pattern(" G ")
 					.pattern("PVP")
 					.pattern(" G ")
@@ -220,7 +220,7 @@ object ItemRegistry {
 			)
 		}
 			.recipe { ctx, p ->
-				ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ctx.entry)
+				ShapedRecipeBuilder.shaped(MISC, ctx.entry)
 					.pattern(" G ")
 					.pattern("PVP")
 					.pattern(" G ")
@@ -246,7 +246,7 @@ object ItemRegistry {
 			)
 		}
 			.recipe { ctx, p ->
-				ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ctx.entry)
+				ShapedRecipeBuilder.shaped(MISC, ctx.entry)
 					.pattern(" G ")
 					.pattern("PVP")
 					.pattern(" G ")
@@ -272,7 +272,7 @@ object ItemRegistry {
 			)
 		}
 			.recipe { ctx, p ->
-				ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ctx.entry)
+				ShapedRecipeBuilder.shaped(MISC, ctx.entry)
 					.pattern(" G ")
 					.pattern("PVP")
 					.pattern(" G ")
@@ -298,7 +298,7 @@ object ItemRegistry {
 			)
 		}
 			.recipe { ctx, p ->
-				ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ctx.entry)
+				ShapedRecipeBuilder.shaped(MISC, ctx.entry)
 					.pattern(" G ")
 					.pattern("PVP")
 					.pattern(" G ")

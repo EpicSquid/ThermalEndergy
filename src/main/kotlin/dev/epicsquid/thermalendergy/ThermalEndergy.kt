@@ -1,15 +1,7 @@
 package dev.epicsquid.thermalendergy
 
 import com.tterrag.registrate.Registrate
-import dev.epicsquid.thermalendergy.data.ThermalEndergyTags
-import dev.epicsquid.thermalendergy.registry.BlockRegistry
-import dev.epicsquid.thermalendergy.registry.CreativeTabsRegistry
-import dev.epicsquid.thermalendergy.registry.ItemRegistry
-import dev.epicsquid.thermalendergy.registry.LangRegistry
-import dev.epicsquid.thermalendergy.registry.LangRegistry.tab
-import net.minecraft.network.chat.Component
-import net.minecraft.world.item.CreativeModeTab
-import net.minecraft.world.item.ItemStack
+import dev.epicsquid.thermalendergy.registry.*
 import net.minecraftforge.common.data.ForgeBlockTagsProvider
 import net.minecraftforge.common.data.ForgeItemTagsProvider
 import net.minecraftforge.data.event.GatherDataEvent
@@ -19,15 +11,16 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext
 @Mod(ThermalEndergy.MODID)
 class ThermalEndergy {
 	companion object {
-		const val MODID = "thermalendergy"
+		const val MODID = "dev/epicsquid/thermalendergy"
 
 		val registrate: Registrate by lazy { Registrate.create(MODID) }
 	}
 
 	init {
-		FMLJavaModLoadingContext.get().modEventBus.addListener { event: GatherDataEvent -> gatherData(event) }
+		val modEventBus = FMLJavaModLoadingContext.get().modEventBus
+		modEventBus.addListener { event: GatherDataEvent -> gatherData(event) }
+		CreativeTabsRegistry.register(modEventBus)
 
-		CreativeTabsRegistry.classload()
 		BlockRegistry.classload()
 		ItemRegistry.classload()
 		LangRegistry.classload()

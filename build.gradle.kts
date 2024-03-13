@@ -77,7 +77,7 @@ minecraft {
 			property("forge.logging.console.level", "debug")
 
 			mods {
-				create("${modId}") {
+				create(modId) {
 					source(sourceSets.main.get())
 				}
 			}

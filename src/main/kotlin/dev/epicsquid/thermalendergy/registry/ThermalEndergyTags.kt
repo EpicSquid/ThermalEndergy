@@ -1,4 +1,4 @@
-package dev.epicsquid.thermalendergy.data
+package dev.epicsquid.thermalendergy.registry
 
 import dev.epicsquid.thermalendergy.ThermalEndergy
 import net.minecraft.core.HolderLookup
