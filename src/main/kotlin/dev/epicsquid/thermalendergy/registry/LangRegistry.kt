@@ -1,7 +1,7 @@
 package dev.epicsquid.thermalendergy.registry
 
 import dev.epicsquid.thermalendergy.ThermalEndergy
-import dev.epicsquid.thermalendergy.ThermalEndergy.Companion.registrate
+import dev.epicsquid.thermalendergy.ThermalEndergy.registrate
 import net.minecraft.network.chat.Component
 
 object LangRegistry {

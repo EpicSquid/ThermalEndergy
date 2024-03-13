@@ -6,14 +6,15 @@ import cofh.core.common.item.ItemCoFH
 import cofh.core.util.helpers.AugmentDataHelper
 import cofh.lib.util.constants.NBTTags
 import cofh.thermal.lib.common.item.AugmentItem
-import com.tterrag.registrate.Registrate
 import com.tterrag.registrate.builders.ItemBuilder
 import com.tterrag.registrate.providers.DataGenContext
 import com.tterrag.registrate.providers.RegistrateItemModelProvider
 import com.tterrag.registrate.providers.RegistrateRecipeProvider
 import com.tterrag.registrate.util.DataIngredient
 import dev.epicsquid.thermalendergy.ThermalEndergy
-import dev.epicsquid.thermalendergy.ThermalEndergy.Companion.registrate
+import dev.epicsquid.thermalendergy.ThermalEndergy.registrate
+import dev.epicsquid.thermalendergy.data.ThermalEndergyTags
+import dev.epicsquid.thermalendergy.utils.ThermalEndergyRegistrate
 import dev.epicsquid.thermalendergy.utils.registryEntry
 import net.minecraft.data.recipes.RecipeCategory
 import net.minecraft.data.recipes.RecipeCategory.MISC
@@ -312,7 +313,7 @@ object ItemRegistry {
 			.register()
 	}
 
-	private fun registerEndergyAlloy(prefix: String, rarity: Rarity): ItemBuilder<ItemCoFH, Registrate> {
+	private fun registerEndergyAlloy(prefix: String, rarity: Rarity): ItemBuilder<ItemCoFH, ThermalEndergyRegistrate> {
 		// Tags
 		val nugget = ItemTags.create(ResourceLocation("forge", "nuggets/$prefix"))
 		val dust = ItemTags.create(ResourceLocation("forge", "dusts/$prefix"))

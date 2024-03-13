@@ -1,23 +1,25 @@
 package dev.epicsquid.thermalendergy
 
 import com.tterrag.registrate.Registrate
-import dev.epicsquid.thermalendergy.registry.*
+import dev.epicsquid.thermalendergy.data.ThermalEndergyTags
+import dev.epicsquid.thermalendergy.registry.BlockRegistry
+import dev.epicsquid.thermalendergy.registry.CreativeTabsRegistry
+import dev.epicsquid.thermalendergy.registry.ItemRegistry
+import dev.epicsquid.thermalendergy.registry.LangRegistry
+import dev.epicsquid.thermalendergy.utils.ThermalEndergyRegistrate
 import net.minecraftforge.common.data.ForgeBlockTagsProvider
-import net.minecraftforge.common.data.ForgeItemTagsProvider
 import net.minecraftforge.data.event.GatherDataEvent
 import net.minecraftforge.fml.common.Mod
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext
+import thedarkcolour.kotlinforforge.forge.MOD_BUS
 
 @Mod(ThermalEndergy.MODID)
-class ThermalEndergy {
-	companion object {
-		const val MODID = "dev/epicsquid/thermalendergy"
+object ThermalEndergy {
+	const val MODID = "thermalendergy"
 
-		val registrate: Registrate by lazy { Registrate.create(MODID) }
-	}
+	val registrate: ThermalEndergyRegistrate by lazy { ThermalEndergyRegistrate.create(MODID) }
 
 	init {
-		val modEventBus = FMLJavaModLoadingContext.get().modEventBus
+		val modEventBus = MOD_BUS
 		modEventBus.addListener { event: GatherDataEvent -> gatherData(event) }
 		CreativeTabsRegistry.register(modEventBus)
 
@@ -29,18 +31,11 @@ class ThermalEndergy {
 	private fun gatherData(event: GatherDataEvent) {
 		val generator = event.generator
 		val blockTagsProvider = ForgeBlockTagsProvider(generator.packOutput, event.lookupProvider, event.existingFileHelper)
-		val itemTagsProvider = ForgeItemTagsProvider(
-			generator.packOutput,
-			event.lookupProvider,
-			blockTagsProvider.contentsGetter(),
-			event.existingFileHelper
-		)
 		generator.addProvider(
 			event.includeServer(),
 			ThermalEndergyTags(
 				generator.packOutput,
 				event.lookupProvider,
-				itemTagsProvider.contentsGetter(),
 				blockTagsProvider.contentsGetter(),
 				event.existingFileHelper
 			)

@@ -1,23 +1,19 @@
-package dev.epicsquid.thermalendergy.registry
+package dev.epicsquid.thermalendergy.data
 
 import dev.epicsquid.thermalendergy.ThermalEndergy
-import net.minecraft.core.HolderLookup
 import net.minecraft.core.HolderLookup.Provider
 import net.minecraft.data.PackOutput
 import net.minecraft.data.tags.ItemTagsProvider
-import net.minecraft.data.tags.TagsProvider
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.tags.ItemTags
-import net.minecraft.world.item.Item
 import net.minecraft.world.level.block.Block
 import net.minecraftforge.common.data.ExistingFileHelper
 import java.util.concurrent.CompletableFuture
 
 class ThermalEndergyTags(
 	output: PackOutput,
-	lookupProvider: CompletableFuture<HolderLookup.Provider>,
-	parentProvider: CompletableFuture<TagsProvider.TagLookup<Item>>,
-	blockTags: CompletableFuture<TagsProvider.TagLookup<Block>>,
+	lookupProvider: CompletableFuture<Provider>,
+	blockTags: CompletableFuture<TagLookup<Block>>,
 	existingFileHelper: ExistingFileHelper
 ) : ItemTagsProvider(output, lookupProvider, blockTags, ThermalEndergy.MODID, existingFileHelper) {
 	public override fun addTags(provider: Provider) {

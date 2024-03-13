@@ -7,7 +7,7 @@ import net.minecraft.world.item.CreativeModeTab
 import net.minecraft.world.item.ItemStack
 import net.minecraftforge.eventbus.api.IEventBus
 import net.minecraftforge.registries.DeferredRegister
-import net.minecraftforge.registries.RegistryObject
+import thedarkcolour.kotlinforforge.forge.registerObject
 
 object CreativeTabsRegistry {
 
@@ -16,7 +16,7 @@ object CreativeTabsRegistry {
 	private val register: DeferredRegister<CreativeModeTab> =
 		DeferredRegister.create(Registries.CREATIVE_MODE_TAB, ThermalEndergy.MODID)
 
-	val tab: RegistryObject<CreativeModeTab> = register.register("base") {
+	val tab by register.registerObject("base") {
 		CreativeModeTab.builder()
 			.icon { ItemStack(BlockRegistry.stellariumBlock.get()) }
 			.title(Component.translatable("itemGroup." + ThermalEndergy.MODID))

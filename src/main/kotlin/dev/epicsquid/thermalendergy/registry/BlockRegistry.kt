@@ -5,7 +5,7 @@ import com.tterrag.registrate.providers.RegistrateRecipeProvider
 import com.tterrag.registrate.util.DataIngredient
 import com.tterrag.registrate.util.entry.BlockEntry
 import dev.epicsquid.thermalendergy.ThermalEndergy
-import dev.epicsquid.thermalendergy.ThermalEndergy.Companion.registrate
+import dev.epicsquid.thermalendergy.ThermalEndergy.registrate
 import net.minecraft.data.recipes.RecipeCategory
 import net.minecraft.data.recipes.ShapelessRecipeBuilder
 import net.minecraft.resources.ResourceLocation

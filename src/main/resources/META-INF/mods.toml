@@ -1,4 +1,4 @@
-modLoader = "javafml"
+modLoader = "kotlinforforge"
 loaderVersion = "${loaderVersionRange}"
 license = "${modLicense}"
 #issueTrackerURL="https://change.me.to.your.issue.tracker.example.invalid/" #optional

@@ -40,6 +40,7 @@ val thermalFoundationVersion: String by extra
 val thermalExpansionVersion: String by extra
 val thermalInnovationVersion: String by extra
 val thermalVersionRange: String by extra
+val kotlinForForgeVersion: String by extra
 
 version = "$minecraftVersion-$modVersion"
 if (System.getenv("BUILD_NUMBER") != null) {
@@ -146,6 +147,10 @@ repositories {
 		name = "Thermal Maven"
 		url = uri("https://maven.covers1624.net/")
 	}
+	maven {
+		name = "Kotlin for Forge"
+		setUrl("https://thedarkcolour.github.io/KotlinForForge/")
+	}
 }
 
 dependencies {
@@ -155,21 +160,14 @@ dependencies {
 		annotationProcessor("org.spongepowered:mixin:$mixinVersion:processor")
 	}
 
-	// Kotlin
-	implementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion")
-	jarJar("org.jetbrains.kotlin:kotlin-stdlib:[$kotlinVersion, )") {
-		jarJar.pin(this, kotlinVersion)
-	}
-	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
-	jarJar("org.jetbrains.kotlinx:kotlinx-coroutines-core:[$coroutinesVersion,)") {
-		jarJar.pin(this, coroutinesVersion)
-	}
-	implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$serializationVersion")
-	jarJar("org.jetbrains.kotlinx:kotlinx-serialization-json:[$serializationVersion,)") {
-		jarJar.pin(this, serializationVersion)
-	}
+	// Kotlin for Forge
+	implementation("thedarkcolour:kotlinforforge:$kotlinForForgeVersion")
 
-// JEI Dependency
+	// Kotlin
+	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
+	implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$serializationVersion")
+
+	// JEI Dependency
 	compileOnly(fg.deobf("mezz.jei:jei-${minecraftVersion}-forge-api:${jeiVersion}"))
 	compileOnly(fg.deobf("mezz.jei:jei-${minecraftVersion}-common-api:${jeiVersion}"))
 	runtimeOnly(fg.deobf("mezz.jei:jei-${minecraftVersion}-forge:${jeiVersion}"))
