@@ -1,5 +1,8 @@
 {
   "values": [
-    "thermalendergy:prismalium_gear"
+    {
+      "id": "thermalendergy:prismalium_gear",
+      "required": false
+    }
   ]
 }

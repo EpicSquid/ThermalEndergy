@@ -1,5 +1,8 @@
 {
   "values": [
-    "thermalendergy:prismalium_plate"
+    {
+      "id": "thermalendergy:prismalium_plate",
+      "required": false
+    }
   ]
 }

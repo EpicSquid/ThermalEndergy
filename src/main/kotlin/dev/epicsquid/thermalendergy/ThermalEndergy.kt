@@ -1,12 +1,11 @@
 package dev.epicsquid.thermalendergy
 
-import dev.epicsquid.thermalendergy.data.ThermalEndergyBlockStates
-import dev.epicsquid.thermalendergy.data.ThermalEndergyBlockTags
-import dev.epicsquid.thermalendergy.data.ThermalEndergyItemTags
-import dev.epicsquid.thermalendergy.data.ThermalEndergyLang
+import dev.epicsquid.thermalendergy.data.*
 import dev.epicsquid.thermalendergy.registry.BlockRegistry
 import dev.epicsquid.thermalendergy.registry.CreativeTabsRegistry
 import dev.epicsquid.thermalendergy.registry.ItemRegistry
+import net.minecraft.data.loot.LootTableProvider
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets
 import net.minecraftforge.data.event.GatherDataEvent
 import net.minecraftforge.fml.common.Mod
 import thedarkcolour.kotlinforforge.forge.MOD_BUS
@@ -30,6 +29,7 @@ object ThermalEndergy {
 		val existingFileHelper = event.existingFileHelper
 
 		generator.addProvider(event.includeClient(), ThermalEndergyBlockStates(packOutput, existingFileHelper))
+		generator.addProvider(event.includeClient(), ThermalEndergyItemModels(packOutput, existingFileHelper))
 		generator.addProvider(event.includeClient(), ThermalEndergyLang(packOutput, "en_us"))
 
 		val blockTags = ThermalEndergyBlockTags(packOutput, lookupProvider, existingFileHelper)
@@ -37,6 +37,14 @@ object ThermalEndergy {
 		generator.addProvider(
 			event.includeServer(),
 			ThermalEndergyItemTags(packOutput, lookupProvider, blockTags, existingFileHelper)
+		)
+		generator.addProvider(event.includeServer(), ThermalEndergyRecipes(packOutput))
+		generator.addProvider(
+			event.includeServer(), LootTableProvider(
+				packOutput, emptySet(), listOf(
+					LootTableProvider.SubProviderEntry(::ThermalEndergyLootTables, LootContextParamSets.BLOCK)
+				)
+			)
 		)
 	}
 }

@@ -8,7 +8,6 @@ import cofh.lib.util.constants.NBTTags
 import cofh.thermal.lib.common.item.AugmentItem
 import dev.epicsquid.thermalendergy.ThermalEndergy
 import net.minecraft.core.registries.Registries
-import net.minecraft.resources.ResourceLocation
 import net.minecraft.world.item.BlockItem
 import net.minecraft.world.item.Item
 import net.minecraft.world.item.Item.Properties
@@ -22,11 +21,9 @@ import thedarkcolour.kotlinforforge.forge.registerObject
 object ItemRegistry {
 	val REGISTRY = DeferredRegister.create(Registries.ITEM, ThermalEndergy.MODID)
 
-	private val countPredicate = ResourceLocation("count")
-
 	val prismaliumIngot by registerEndergyAlloy("prismalium", UNCOMMON)
 	val melodiumIngot by registerEndergyAlloy("melodium", RARE)
-	val sterllariumIngot by registerEndergyAlloy("stellarium", RARE)
+	val stellariumIngot by registerEndergyAlloy("stellarium", RARE)
 
 	val prismaliumBlock by REGISTRY.registerObject("prismalium_block") {
 		BlockItem(BlockRegistry.prismaliumBlock, Properties().rarity(UNCOMMON))
@@ -459,23 +456,4 @@ object ItemRegistry {
 //					.save(p, ResourceLocation(p.safeId(item.entry).namespace, p.safeId(item.entry).path + "_from_block"))
 //			}
 	}
-
-//	private fun getCountModel(
-//		p: RegistrateItemModelProvider,
-//		item: DataGenContext<Item, *>,
-//		name: String,
-//		counts: FloatArray
-//	) {
-//		var prov = p.generated(item, ResourceLocation(ThermalEndergy.MODID, "item/" + name + "_0"))
-//		for (i in counts.indices) {
-//			prov = prov.override()
-//				.predicate(countPredicate, counts[i])
-//				.model(
-//					p.getBuilder(p.name(item) + "_" + i)
-//						.parent(UncheckedModelFile("item/generated"))
-//						.texture("layer0", ResourceLocation(ThermalEndergy.MODID, "item/" + name + "_" + i))
-//				)
-//				.end()
-//		}
-//	}
 }

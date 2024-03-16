@@ -1,5 +1,8 @@
 {
   "values": [
-    "thermalendergy:stellarium_block"
+    {
+      "id": "thermalendergy:stellarium_storage_block",
+      "required": false
+    }
   ]
 }

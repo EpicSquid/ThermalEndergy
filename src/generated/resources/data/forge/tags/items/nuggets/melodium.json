@@ -1,5 +1,8 @@
 {
   "values": [
-    "thermalendergy:melodium_nugget"
+    {
+      "id": "thermalendergy:melodium_nugget",
+      "required": false
+    }
   ]
 }

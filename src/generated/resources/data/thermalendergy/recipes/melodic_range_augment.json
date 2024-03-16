@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "G": {
       "tag": "forge:gears/enderium"
@@ -18,5 +19,6 @@
   ],
   "result": {
     "item": "thermalendergy:melodic_range_augment"
-  }
+  },
+  "show_notification": true
 }

@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "forge:ingots/melodium"
+    },
+    {
+      "tag": "forge:ingots/melodium"
+    },
+    {
+      "tag": "forge:ingots/melodium"
+    },
+    {
+      "tag": "forge:ingots/melodium"
+    },
+    {
+      "tag": "forge:ingots/melodium"
+    },
+    {
+      "tag": "forge:ingots/melodium"
+    },
+    {
+      "tag": "forge:ingots/melodium"
+    },
+    {
+      "tag": "forge:ingots/melodium"
+    },
+    {
+      "tag": "forge:ingots/melodium"
+    }
+  ],
+  "result": {
+    "item": "thermalendergy:melodium_block"
+  }
+}

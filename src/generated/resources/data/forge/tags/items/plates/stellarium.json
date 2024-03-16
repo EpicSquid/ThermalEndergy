@@ -1,5 +1,8 @@
 {
   "values": [
-    "thermalendergy:stellarium_plate"
+    {
+      "id": "thermalendergy:stellarium_plate",
+      "required": false
+    }
   ]
 }

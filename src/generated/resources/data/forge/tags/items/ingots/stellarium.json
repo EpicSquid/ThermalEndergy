@@ -1,5 +1,8 @@
 {
   "values": [
-    "thermalendergy:stellarium_ingot"
+    {
+      "id": "thermalendergy:stellarium_ingot",
+      "required": false
+    }
   ]
 }

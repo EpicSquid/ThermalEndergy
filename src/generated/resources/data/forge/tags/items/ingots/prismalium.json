@@ -1,5 +1,8 @@
 {
   "values": [
-    "thermalendergy:prismalium_ingot"
+    {
+      "id": "thermalendergy:prismalium_ingot",
+      "required": false
+    }
   ]
 }

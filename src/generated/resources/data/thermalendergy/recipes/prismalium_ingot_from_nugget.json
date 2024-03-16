@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "forge:nuggets/prismalium"
+    },
+    {
+      "tag": "forge:nuggets/prismalium"
+    },
+    {
+      "tag": "forge:nuggets/prismalium"
+    },
+    {
+      "tag": "forge:nuggets/prismalium"
+    },
+    {
+      "tag": "forge:nuggets/prismalium"
+    },
+    {
+      "tag": "forge:nuggets/prismalium"
+    },
+    {
+      "tag": "forge:nuggets/prismalium"
+    },
+    {
+      "tag": "forge:nuggets/prismalium"
+    },
+    {
+      "tag": "forge:nuggets/prismalium"
+    }
+  ],
+  "result": {
+    "item": "thermalendergy:prismalium_ingot"
+  }
+}

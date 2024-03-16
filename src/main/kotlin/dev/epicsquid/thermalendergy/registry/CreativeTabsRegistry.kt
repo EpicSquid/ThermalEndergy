@@ -5,7 +5,6 @@ import net.minecraft.core.registries.Registries
 import net.minecraft.network.chat.Component
 import net.minecraft.world.item.CreativeModeTab
 import net.minecraft.world.item.CreativeModeTabs
-import net.minecraft.world.item.ItemStack
 import net.minecraftforge.registries.DeferredRegister
 import thedarkcolour.kotlinforforge.forge.registerObject
 
@@ -15,7 +14,7 @@ object CreativeTabsRegistry {
 
 	val tab by REGISTRY.registerObject("base") {
 		CreativeModeTab.builder()
-			.icon { ItemRegistry.sterllariumIngot.defaultInstance }
+			.icon { ItemRegistry.stellariumIngot.defaultInstance }
 			.title(Component.translatable("itemGroup." + ThermalEndergy.MODID))
 			.displayItems { _, output ->
 				ItemRegistry.REGISTRY.entries.forEach {

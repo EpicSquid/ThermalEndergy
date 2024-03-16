@@ -1,5 +1,8 @@
 {
   "values": [
-    "thermalendergy:stellarium_dust"
+    {
+      "id": "thermalendergy:stellarium_dust",
+      "required": false
+    }
   ]
 }

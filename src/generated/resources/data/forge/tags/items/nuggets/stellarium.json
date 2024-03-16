@@ -1,5 +1,8 @@
 {
   "values": [
-    "thermalendergy:stellarium_nugget"
+    {
+      "id": "thermalendergy:stellarium_nugget",
+      "required": false
+    }
   ]
 }

@@ -1,5 +1,8 @@
 {
   "values": [
-    "thermalendergy:melodium_gear"
+    {
+      "id": "thermalendergy:melodium_gear",
+      "required": false
+    }
   ]
 }

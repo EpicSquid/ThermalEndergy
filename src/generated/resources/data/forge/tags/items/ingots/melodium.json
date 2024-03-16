@@ -1,5 +1,8 @@
 {
   "values": [
-    "thermalendergy:melodium_ingot"
+    {
+      "id": "thermalendergy:melodium_ingot",
+      "required": false
+    }
   ]
 }

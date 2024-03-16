@@ -1,5 +1,8 @@
 {
   "values": [
-    "thermalendergy:melodium_dust"
+    {
+      "id": "thermalendergy:melodium_dust",
+      "required": false
+    }
   ]
 }

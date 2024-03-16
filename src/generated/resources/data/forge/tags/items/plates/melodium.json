@@ -1,5 +1,8 @@
 {
   "values": [
-    "thermalendergy:melodium_plate"
+    {
+      "id": "thermalendergy:melodium_plate",
+      "required": false
+    }
   ]
 }

@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "I": {
       "tag": "forge:ingots/melodium"
@@ -15,5 +16,6 @@
   ],
   "result": {
     "item": "thermalendergy:melodium_gear"
-  }
+  },
+  "show_notification": true
 }

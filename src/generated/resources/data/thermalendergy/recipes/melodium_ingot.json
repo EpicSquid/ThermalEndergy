@@ -1,35 +1,13 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "category": "misc",
   "ingredients": [
     {
-      "tag": "forge:nuggets/melodium"
-    },
-    {
-      "tag": "forge:nuggets/melodium"
-    },
-    {
-      "tag": "forge:nuggets/melodium"
-    },
-    {
-      "tag": "forge:nuggets/melodium"
-    },
-    {
-      "tag": "forge:nuggets/melodium"
-    },
-    {
-      "tag": "forge:nuggets/melodium"
-    },
-    {
-      "tag": "forge:nuggets/melodium"
-    },
-    {
-      "tag": "forge:nuggets/melodium"
-    },
-    {
-      "tag": "forge:nuggets/melodium"
+      "tag": "forge:storage_blocks/melodium"
     }
   ],
   "result": {
+    "count": 9,
     "item": "thermalendergy:melodium_ingot"
   }
 }

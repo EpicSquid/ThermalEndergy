@@ -1,5 +1,8 @@
 {
   "values": [
-    "thermalendergy:prismalium_dust"
+    {
+      "id": "thermalendergy:prismalium_dust",
+      "required": false
+    }
   ]
 }

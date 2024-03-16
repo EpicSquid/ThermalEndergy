@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "E": {
       "item": "minecraft:echo_shard"
@@ -15,5 +16,6 @@
   ],
   "result": {
     "item": "thermalendergy:vibrating_core"
-  }
+  },
+  "show_notification": true
 }

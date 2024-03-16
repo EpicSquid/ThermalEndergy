@@ -17,9 +17,10 @@ object BlockRegistry {
 	val prismaliumBlockItemTag = ItemTags.create(ResourceLocation("forge", "storage_blocks/prismalium"))
 	private val prismaliumIngotTag = ItemTags.create(ResourceLocation("forge", "ingots/prismalium"))
 
-	val prismaliumBlock by REGISTRY.registerObject("prismalium_block") {
+	val prismaliumBlockObject = REGISTRY.registerObject("prismalium_block") {
 		Block(Properties.of().strength(5.0f, 6.0f).requiresCorrectToolForDrops())
 	}
+	val prismaliumBlock by prismaliumBlockObject
 //		registrate.block<Block>("prismalium_block") { Block(it) }
 //			.properties { it.strength(5.0f, 6.0f).requiresCorrectToolForDrops() }
 //			.tag(
@@ -42,15 +43,17 @@ object BlockRegistry {
 	val melodiumBlockItemTag = ItemTags.create(ResourceLocation("forge", "storage_blocks/melodium"))
 	private val melodiumIngotTag = ItemTags.create(ResourceLocation("forge", "ingots/melodium"))
 
-	val melodiumBlock by REGISTRY.registerObject("melodium_block") {
+	val melodiumBlockObject = REGISTRY.registerObject("melodium_block") {
 		Block(Properties.of().strength(5.0f, 6.0f).requiresCorrectToolForDrops())
 	}
+	val melodiumBlock by melodiumBlockObject
 
 	private val stellariumItemBlockTag: TagKey<Item> =
 		ItemTags.create(ResourceLocation("forge", "storage_blocks/stellarium"))
 	private val stellariumIngotTag = ItemTags.create(ResourceLocation("forge", "ingots/stellarium"))
 
-	val stellariumBlock by REGISTRY.registerObject("stellarium_block") {
+	val stellariumBlockObject = REGISTRY.registerObject("stellarium_block") {
 		Block(Properties.of().strength(5.0f, 6.0f).requiresCorrectToolForDrops())
 	}
+	val stellariumBlock by stellariumBlockObject
 }
