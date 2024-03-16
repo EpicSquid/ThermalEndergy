@@ -176,12 +176,6 @@ dependencies {
 	compileOnly(fg.deobf("top.theillusivec4.curios:curios-forge:${curiosVersion}:api"))
 	runtimeOnly(fg.deobf("top.theillusivec4.curios:curios-forge:${curiosVersion}"))
 
-	// Registrate
-	implementation("com.tterrag.registrate:Registrate:$registrateVersion")
-	jarJar("com.tterrag.registrate:Registrate:[$registrateVersion,)") {
-		jarJar.pin(this, registrateVersion)
-	}
-
 	// Thermal
 	implementation(fg.deobf("com.teamcofh:cofh_core:$minecraftVersion-$cofhCoreVersion"))
 	implementation(fg.deobf("com.teamcofh:thermal_core:$minecraftVersion-$thermalCoreVersion"))

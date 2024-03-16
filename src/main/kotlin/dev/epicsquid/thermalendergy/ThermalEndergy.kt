@@ -1,13 +1,12 @@
 package dev.epicsquid.thermalendergy
 
-import com.tterrag.registrate.Registrate
-import dev.epicsquid.thermalendergy.data.ThermalEndergyTags
+import dev.epicsquid.thermalendergy.data.ThermalEndergyBlockStates
+import dev.epicsquid.thermalendergy.data.ThermalEndergyBlockTags
+import dev.epicsquid.thermalendergy.data.ThermalEndergyItemTags
+import dev.epicsquid.thermalendergy.data.ThermalEndergyLang
 import dev.epicsquid.thermalendergy.registry.BlockRegistry
 import dev.epicsquid.thermalendergy.registry.CreativeTabsRegistry
 import dev.epicsquid.thermalendergy.registry.ItemRegistry
-import dev.epicsquid.thermalendergy.registry.LangRegistry
-import dev.epicsquid.thermalendergy.utils.ThermalEndergyRegistrate
-import net.minecraftforge.common.data.ForgeBlockTagsProvider
 import net.minecraftforge.data.event.GatherDataEvent
 import net.minecraftforge.fml.common.Mod
 import thedarkcolour.kotlinforforge.forge.MOD_BUS
@@ -16,29 +15,28 @@ import thedarkcolour.kotlinforforge.forge.MOD_BUS
 object ThermalEndergy {
 	const val MODID = "thermalendergy"
 
-	val registrate: ThermalEndergyRegistrate by lazy { ThermalEndergyRegistrate.create(MODID) }
-
 	init {
 		val modEventBus = MOD_BUS
 		modEventBus.addListener { event: GatherDataEvent -> gatherData(event) }
-		CreativeTabsRegistry.register(modEventBus)
-
-		BlockRegistry.classload()
-		ItemRegistry.classload()
-		LangRegistry.classload()
+		CreativeTabsRegistry.REGISTRY.register(modEventBus)
+		BlockRegistry.REGISTRY.register(modEventBus)
+		ItemRegistry.REGISTRY.register(modEventBus)
 	}
 
 	private fun gatherData(event: GatherDataEvent) {
 		val generator = event.generator
-		val blockTagsProvider = ForgeBlockTagsProvider(generator.packOutput, event.lookupProvider, event.existingFileHelper)
+		val packOutput = generator.packOutput
+		val lookupProvider = event.lookupProvider
+		val existingFileHelper = event.existingFileHelper
+
+		generator.addProvider(event.includeClient(), ThermalEndergyBlockStates(packOutput, existingFileHelper))
+		generator.addProvider(event.includeClient(), ThermalEndergyLang(packOutput, "en_us"))
+
+		val blockTags = ThermalEndergyBlockTags(packOutput, lookupProvider, existingFileHelper)
+		generator.addProvider(event.includeServer(), blockTags)
 		generator.addProvider(
 			event.includeServer(),
-			ThermalEndergyTags(
-				generator.packOutput,
-				event.lookupProvider,
-				blockTagsProvider.contentsGetter(),
-				event.existingFileHelper
-			)
+			ThermalEndergyItemTags(packOutput, lookupProvider, blockTags, existingFileHelper)
 		)
 	}
 }
