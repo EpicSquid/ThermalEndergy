@@ -41,6 +41,7 @@ val thermalExpansionVersion: String by extra
 val thermalInnovationVersion: String by extra
 val thermalVersionRange: String by extra
 val kotlinForForgeVersion: String by extra
+val kotlinForForgeVersionRange: String by extra
 
 version = "$minecraftVersion-$modVersion"
 if (System.getenv("BUILD_NUMBER") != null) {
@@ -202,7 +203,8 @@ tasks.withType<ProcessResources> {
 				"modName" to modName,
 				"modVersion" to version,
 				"modLicense" to modLicense,
-				"thermalVersionRange" to thermalVersionRange
+				"thermalVersionRange" to thermalVersionRange,
+				"kotlinForForgeVersionRange" to kotlinForForgeVersionRange,
 			)
 		)
 	}

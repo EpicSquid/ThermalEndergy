@@ -35,3 +35,9 @@ mandatory = false
 versionRange = "${thermalVersionRange}"
 ordering = "NONE"
 side = "BOTH"
+[[dependencies.${ modId }]]
+modId = "kotlinforforge"
+mandatory = false
+versionRange = "${kotlinForForgeVersionRange}"
+ordering = "NONE"
+side = "BOTH"
