@@ -1,8 +1,5 @@
 {
   "values": [
-    {
-      "id": "thermalendergy:prismalium_storage_block",
-      "required": false
-    }
+    "thermalendergy:prismalium_block"
   ]
 }

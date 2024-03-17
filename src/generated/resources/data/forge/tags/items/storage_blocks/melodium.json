@@ -1,8 +1,5 @@
 {
   "values": [
-    {
-      "id": "thermalendergy:melodium_storage_block",
-      "required": false
-    }
+    "thermalendergy:melodium_block"
   ]
 }

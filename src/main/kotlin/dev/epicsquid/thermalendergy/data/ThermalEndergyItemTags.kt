@@ -1,6 +1,7 @@
 package dev.epicsquid.thermalendergy.data
 
 import dev.epicsquid.thermalendergy.ThermalEndergy
+import dev.epicsquid.thermalendergy.registry.ItemRegistry
 import net.minecraft.core.HolderLookup.Provider
 import net.minecraft.data.PackOutput
 import net.minecraft.data.tags.ItemTagsProvider
@@ -54,6 +55,13 @@ class ThermalEndergyItemTags(
 		alloyTag("prismalium")
 		alloyTag("melodium")
 		alloyTag("stellarium")
+
+		tag(PRISMALIUM_BLOCK)
+			.add(ItemRegistry.prismaliumBlock)
+		tag(MELODIUM_BLOCK)
+			.add(ItemRegistry.melodiumBlock)
+		tag(STELLARIUM_BLOCK)
+			.add(ItemRegistry.stellariumBlock)
 	}
 
 	private fun alloyTag(name: String) {
@@ -63,7 +71,6 @@ class ThermalEndergyItemTags(
 		alloyTag(name, "gear")
 		alloyTag(name, "plate")
 		alloyTag(name, "coin")
-		alloyTag(name, "storage_block")
 	}
 
 	private fun alloyTag(name: String, suffix: String) {
