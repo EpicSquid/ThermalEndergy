@@ -21,24 +21,6 @@ object BlockRegistry {
 		Block(Properties.of().strength(5.0f, 6.0f).requiresCorrectToolForDrops())
 	}
 	val prismaliumBlock by prismaliumBlockObject
-//		registrate.block<Block>("prismalium_block") { Block(it) }
-//			.properties { it.strength(5.0f, 6.0f).requiresCorrectToolForDrops() }
-//			.tag(
-//				BlockTags.MINEABLE_WITH_PICKAXE,
-//				BlockTags.NEEDS_IRON_TOOL,
-//				BlockTags.BEACON_BASE_BLOCKS,
-//				prismaliumBlockTag
-//			)
-//			.item()
-//			.tag(prismaliumBlockItemTag)
-//			.recipe { item: DataGenContext<Item, BlockItem>, p: RegistrateRecipeProvider ->
-//				ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, item.entry)
-//					.requires(Ingredient.of(prismaliumIngotTag), 9)
-//					.unlockedBy("has_block", DataIngredient.tag(prismaliumBlockItemTag).getCritereon(p))
-//					.save(p, ResourceLocation(ThermalEndergy.MODID, "ingot_to_prismalium_block"))
-//			}
-//			.build()
-//			.register()
 
 	val melodiumBlockItemTag = ItemTags.create(ResourceLocation("forge", "storage_blocks/melodium"))
 	private val melodiumIngotTag = ItemTags.create(ResourceLocation("forge", "ingots/melodium"))
