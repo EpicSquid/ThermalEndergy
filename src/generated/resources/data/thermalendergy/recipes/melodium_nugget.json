@@ -1,12 +1,13 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "category": "misc",
   "ingredients": [
     {
       "tag": "forge:ingots/melodium"
     }
   ],
   "result": {
-    "item": "thermalendergy:melodium_nugget",
-    "count": 9
+    "count": 9,
+    "item": "thermalendergy:melodium_nugget"
   }
 }

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "thermalendergy:item/dynamo_consumption_nullifier_augment"
+  }
+}

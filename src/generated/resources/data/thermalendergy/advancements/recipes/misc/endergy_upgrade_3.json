@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_stellarium": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:ingots/stellarium"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "thermalendergy:endergy_upgrade_3"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_stellarium",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "thermalendergy:endergy_upgrade_3"
+    ]
+  },
+  "sends_telemetry_event": false
+}

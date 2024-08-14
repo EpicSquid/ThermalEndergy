@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "forge:ingots/stellarium"
+    },
+    {
+      "tag": "forge:ingots/stellarium"
+    },
+    {
+      "tag": "forge:ingots/stellarium"
+    },
+    {
+      "tag": "forge:ingots/stellarium"
+    },
+    {
+      "tag": "forge:ingots/stellarium"
+    },
+    {
+      "tag": "forge:ingots/stellarium"
+    },
+    {
+      "tag": "forge:ingots/stellarium"
+    },
+    {
+      "tag": "forge:ingots/stellarium"
+    },
+    {
+      "tag": "forge:ingots/stellarium"
+    }
+  ],
+  "result": {
+    "item": "thermalendergy:stellarium_block"
+  }
+}

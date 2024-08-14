@@ -1,0 +1,8 @@
+{
+  "values": [
+    {
+      "id": "thermalendergy:stellarium_coin",
+      "required": false
+    }
+  ]
+}

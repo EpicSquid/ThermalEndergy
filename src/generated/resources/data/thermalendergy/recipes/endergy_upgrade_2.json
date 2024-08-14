@@ -1,25 +1,27 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "IXI",
-    "GCG",
-    "IXI"
-  ],
+  "category": "misc",
   "key": {
-    "I": {
-      "tag": "forge:ingots/melodium"
-    },
     "C": {
       "item": "thermalendergy:endergy_upgrade_1"
     },
     "G": {
       "tag": "forge:gears/prismalium"
     },
+    "I": {
+      "tag": "forge:ingots/melodium"
+    },
     "X": {
       "item": "minecraft:shulker_shell"
     }
   },
+  "pattern": [
+    "IXI",
+    "GCG",
+    "IXI"
+  ],
   "result": {
     "item": "thermalendergy:endergy_upgrade_2"
-  }
+  },
+  "show_notification": true
 }

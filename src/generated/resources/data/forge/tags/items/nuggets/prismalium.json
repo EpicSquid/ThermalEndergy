@@ -1,6 +1,8 @@
 {
-  "replace": false,
   "values": [
-    "thermalendergy:prismalium_nugget"
+    {
+      "id": "thermalendergy:prismalium_nugget",
+      "required": false
+    }
   ]
 }
